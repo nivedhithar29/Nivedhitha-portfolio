@@ -37,7 +37,7 @@ export default function Mark({
     );
   }
   return (
-    <a href="#top" className={`group flex items-center gap-2.5 ${className}`} aria-label="Niranula — home">
+    <a href="#top" className={`group flex items-center gap-2.5 ${className}`} aria-label="Niranula · home">
       <WaveGlyph className="w-7 text-navy transition-transform duration-500 group-hover:-translate-y-0.5" />
       <span className="flex flex-col leading-none">
         <span className="display text-navy tracking-[0.16em] text-[1.05rem]">NIRANULA</span>

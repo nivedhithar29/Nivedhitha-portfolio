@@ -3,32 +3,32 @@
 @tailwind utilities;
 
 /* ============================================================
-   NIRANULA — The Narrative House
+   NIRANULA · The Narrative House
    Design system: refined editorial luxury, ukiyo-e wave motif
    ============================================================ */
 
 :root {
-  --shell: #ffeff0;
-  --shell-2: #fbe7ea;
-  --cream: #eed9c4;
-  --sand: #d9b99f;
-  --mist: #e8e5e5;
-  --silver: #d9d9d9;
-  --ink: #1a1a1a;
-  --navy: #133951;
-  --teal: #0e6973;
-  --sage: #a2c4ab;
-  --sage-soft: #bad9ce;
-  --aqua: #bae0da;
-  --cobalt: #032986;
-  --cyan: #59ccd9;
-  --coral: #f2aeb4;
-  --terracotta: #c9766a;
-  --gold: #f8d152;
-  --amber: #f0bf48;
+  --shell: #fff6ec;
+  --shell-2: #ffeed6;
+  --cream: #facb73;
+  --sand: #cfb793;
+  --mist: #f0e7d8;
+  --silver: #ded3c2;
+  --ink: #243b53;
+  --navy: #06346f;
+  --teal: #577a9a;
+  --sage: #cfb793;
+  --sage-soft: #e0cfad;
+  --aqua: #aac4da;
+  --cobalt: #06346f;
+  --cyan: #facb73;
+  --coral: #f89128;
+  --terracotta: #f89128;
+  --gold: #facb73;
+  --amber: #f89128;
 
-  --paper: #fbf6f1;
-  --hairline: rgba(19, 57, 81, 0.16);
+  --paper: #fff7ea;
+  --hairline: rgba(6, 52, 111, 0.16);
 }
 
 * {
@@ -158,7 +158,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.6);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.8) inset,
-      0 24px 60px -38px rgba(19, 57, 81, 0.4);
+      0 24px 60px -38px rgba(6, 52, 111, 0.4);
   }
 
   /* Link underline reveal */
@@ -206,7 +206,7 @@ body {
   .btn-dark {
     background: var(--navy);
     color: var(--shell);
-    box-shadow: 0 18px 40px -22px rgba(19, 57, 81, 0.9);
+    box-shadow: 0 18px 40px -22px rgba(6, 52, 111, 0.9);
   }
   .btn-dark:hover {
     background: var(--ink);

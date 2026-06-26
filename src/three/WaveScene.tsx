@@ -3,7 +3,7 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 /* ------------------------------------------------------------------
-   The Lone Wave — a calm, flowing ukiyo-e ocean rendered in GLSL.
+   The Lone Wave, a calm, flowing ukiyo-e ocean rendered in GLSL.
    Coral horizon, teal water, soft foam crests. The signature motif.
 ------------------------------------------------------------------ */
 
@@ -92,11 +92,11 @@ function Ocean() {
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uDeep: { value: hex('#177B81') },
-      uMid: { value: hex('#A6DAD6') },
-      uSky: { value: hex('#FFEFF0') },
-      uHorizon: { value: hex('#F2BDB5') },
-      uFoam: { value: hex('#FCF7F2') },
+      uDeep: { value: hex('#06346F') },
+      uMid: { value: hex('#577A9A') },
+      uSky: { value: hex('#FFF1DA') },
+      uHorizon: { value: hex('#F89128') },
+      uFoam: { value: hex('#FFE9CF') },
     }),
     [],
   );

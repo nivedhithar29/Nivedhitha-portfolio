@@ -1,6 +1,6 @@
 /**
  * A layered, stylised ukiyo-e wave band rendered entirely in SVG.
- * Used as a decorative finale / divider — lightweight and on-palette.
+ * Used as a decorative finale / divider, lightweight and on-palette.
  */
 export default function WaveBand({ className = '' }: { className?: string }) {
   return (
@@ -14,19 +14,19 @@ export default function WaveBand({ className = '' }: { className?: string }) {
     >
       <defs>
         <linearGradient id="wb-deep" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#0E6973" />
-          <stop offset="1" stopColor="#133951" />
+          <stop offset="0" stopColor="#577A9A" />
+          <stop offset="1" stopColor="#06346F" />
         </linearGradient>
         <linearGradient id="wb-mid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#7FBEC0" />
-          <stop offset="1" stopColor="#4E9CA0" />
+          <stop offset="0" stopColor="#89A6C0" />
+          <stop offset="1" stopColor="#577A9A" />
         </linearGradient>
       </defs>
 
       {/* back swell */}
       <path
         d="M0 150 C 180 90, 320 90, 480 150 S 820 230, 1000 150 S 1300 80, 1440 140 L 1440 320 L 0 320 Z"
-        fill="#BAE0DA"
+        fill="#AAC4DA"
         opacity="0.7"
       />
       {/* mid swell */}
@@ -38,7 +38,7 @@ export default function WaveBand({ className = '' }: { className?: string }) {
       {/* foam crest line */}
       <path
         d="M0 196 C 200 136, 360 256, 560 196 S 900 126, 1080 206 S 1320 256, 1440 206"
-        stroke="#FCF7F2"
+        stroke="#FFE9CF"
         strokeWidth="3"
         strokeLinecap="round"
         opacity="0.7"
@@ -51,9 +51,9 @@ export default function WaveBand({ className = '' }: { className?: string }) {
       {/* coral horizon glow */}
       <path
         d="M0 150 C 180 90, 320 90, 480 150 S 820 230, 1000 150 S 1300 80, 1440 140"
-        stroke="#F2AEB4"
+        stroke="#F89128"
         strokeWidth="2"
-        opacity="0.5"
+        opacity="0.6"
       />
     </svg>
   );

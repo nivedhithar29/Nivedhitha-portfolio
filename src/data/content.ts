@@ -1,5 +1,5 @@
 /* ============================================================
-   NIRANULA — content model
+   NIRANULA · content model
    Sourced from the NIRANULA · The Narrative House portfolio.
    ============================================================ */
 
@@ -11,7 +11,7 @@ export const profile = {
   disciplines: ['Emotional Brand Strategy', 'Copywriting', 'Cultural Communication'],
   email: 'nivedhithar29@gmail.com',
   phone: '+91 8903586553',
-  location: 'India — anywhere a story calls',
+  location: 'India, anywhere a story calls',
   travel: 'Happily. Especially if there is chai.',
 };
 
@@ -25,11 +25,11 @@ export const nav = [
 ];
 
 export const about = {
-  kicker: 'What I really do is listen',
-  lead: "Not just to what it means — but to what it means, what it feels, and what it's trying (sometimes awkwardly) to become.",
+  kicker: 'a little about me',
+  lead: "Not just to what it means, but to what it feels, and what it's trying (sometimes awkwardly) to become.",
   body: [
     'I work at the intersection of story, culture and strategy.',
-    'I help brands find emotional clarity in the way they communicate — in a way that feels human, honest and true to who they are.',
+    'I help brands find emotional clarity in the way they communicate, in a way that feels human, honest and true to who they are.',
     "I'm not loud. I'm not flashy. I don't believe in over-polish or pretense. I believe in attention.",
   ],
   signature: 'Story-led Communication Specialist',
@@ -39,13 +39,13 @@ export const pillars = [
   {
     no: '01',
     title: 'Emotional Brand Strategy',
-    body: 'I start with the heart of the brand — the nervous, the wound, the north star — and shape that into a direction that feels aligned and grounded.',
+    body: 'I start with the heart of the brand, the nervous, the wound, the north star, and shape that into a direction that feels aligned and grounded.',
     tone: 'navy',
   },
   {
     no: '02',
     title: 'Story-Driven Content Systems',
-    body: 'I build content that flows like a narrative: connected, evolving, meaningful — never a template stretched across a calendar.',
+    body: 'I build content that flows like a narrative: connected, evolving, meaningful, never a template stretched across a calendar.',
     tone: 'teal',
   },
   {
@@ -57,13 +57,13 @@ export const pillars = [
   {
     no: '04',
     title: 'Founder Voice + Creative Copy',
-    body: "I translate a founder's personality into words that feel like them — not like a template.",
+    body: "I translate a founder's personality into words that feel like them, not like a template.",
     tone: 'terracotta',
   },
   {
     no: '05',
     title: 'AI-Aided Workflows',
-    body: 'I use AI thoughtfully — as a tool to unlock research, cleaner structures and content that stays sharp without losing its humanity.',
+    body: 'I use AI thoughtfully, as a tool to unlock research, cleaner structures and content that stays sharp without losing its humanity.',
     tone: 'amber',
   },
 ];
@@ -74,19 +74,19 @@ export const approach = {
     'I work gently, but with clarity.',
     "I ask questions brands didn't know they needed to answer.",
     'I look for the story beneath the strategy, and the strategy beneath the story.',
-    'Most of all, I listen — because every brand, no matter how big or messy or early, has something worth being said with intention.',
+    'Most of all, I listen, because every brand, no matter how big or messy or early, has something worth being said with intention.',
     "And that's what I help them find.",
   ],
 };
 
 export const logoMeanings = [
   { title: 'Lone Wave', body: 'A single, fluid line symbolising intuition, movement, and my "lone-wolf" creative energy.' },
-  { title: 'Calm + Grounding', body: 'A steady centre to return to — the feeling of a held breath finally released.' },
+  { title: 'Calm + Grounding', body: 'A steady centre to return to, the feeling of a held breath finally released.' },
   { title: 'Structure + Softness', body: 'Form with room to move; the discipline of a line that still knows how to bend.' },
   { title: 'Bridge of Meaning', body: 'The crossing between what is said and what is truly meant.' },
-  { title: 'Pause + Breath', body: 'Space written into the rhythm — silence as part of the sentence.' },
+  { title: 'Pause + Breath', body: 'Space written into the rhythm, silence as part of the sentence.' },
   { title: 'Story Arc Unfolding', body: 'The rise and fall of a narrative finding its own natural shape.' },
-  { title: 'Horizon Rising', body: 'A line that keeps reaching forward — quiet ambition, steadily kept.' },
+  { title: 'Horizon Rising', body: 'A line that keeps reaching forward, quiet ambition, steadily kept.' },
   { title: 'Scorpio Stillness', body: 'Depth held beneath the surface; intensity that does not need to shout.' },
 ];
 
@@ -94,10 +94,10 @@ export const wordmark = {
   title: 'Wordmark',
   body: "Formed from my family's initials. A name anchored in home.",
   initials: [
-    { letter: 'R', who: 'Ravi · My Name' },
-    { letter: 'A', who: 'Laxmiyan · My Bro' },
-    { letter: 'N', who: 'Nivedhitha · Me' },
-    { letter: 'U', who: 'Anumaya · My Amma' },
+    { letter: 'NI', who: 'Nivedhitha · Me', tone: 'navy' },
+    { letter: 'RA', who: 'Ravi · My Naina', tone: 'teal' },
+    { letter: 'NU', who: 'Anusuya · My Amma', tone: 'gold' },
+    { letter: 'LA', who: 'Lavanyan · My Bro', tone: 'coral' },
   ],
   submark: 'A familiar place for voices, ideas, and the stories that need room to breathe.',
 };
@@ -106,7 +106,7 @@ export const projects = [
   {
     id: 'fashionbi',
     name: 'Fashionbi',
-    location: 'Milan, Italy — Remote',
+    location: 'Milan, Italy · Remote',
     roles: 'Trend Researcher · Insights Writer · Content Strategist',
     accent: 'navy',
     summary:
@@ -114,7 +114,7 @@ export const projects = [
     impact: [
       'Insights cited inside Google snippets, ChatGPT inline references and trend round-ups.',
       'My report “The Luxury × Sportswear Fashion Ludo” became the #1 most-read piece (Index 100), shared by the Chief eBusiness Officer of Valentino.',
-      'A Story Kids insight graphic went viral on X — 3M+ views, 1.7K likes, 900+ reposts — amplifying Fashionbi\'s cultural reach.',
+      'A Story Kids insight graphic went viral on X, 3M+ views, 1.7K likes, 900+ reposts, amplifying Fashionbi\'s cultural reach.',
     ],
     metric: { value: '3M+', label: 'views on a single insight' },
   },
@@ -125,7 +125,7 @@ export const projects = [
     roles: 'Research Strategist · AI Ops · Compliance Writer',
     accent: 'teal',
     summary:
-      'Strategic research and market regulation support across i+Yashae (US), Hair & Compounds (US) and DHPL Group — building workflows for research, SEO, documentation and operations.',
+      'Strategic research and market regulation support across i+Yashae (US), Hair & Compounds (US) and DHPL Group, building workflows for research, SEO, documentation and operations.',
     impact: [
       'Compliance mapping across EU, US and Canada with audit-ready content systems.',
       'SEO / AEO / GEO keyword audits, metadata and internal linking architecture.',
@@ -142,7 +142,7 @@ export const projects = [
     summary:
       'Built brand partnerships and collaborations with celebrities and influencers, elevating social engagement through aligned, emotionally legible content.',
     impact: [
-      'Introduced Linktree optimisation — the first one-tap online orders via Instagram.',
+      'Introduced Linktree optimisation, the first one-tap online orders via Instagram.',
       'Streamlined e-commerce product alignment and supported email-marketing-led PR.',
       'Helped introduce a “Shop the Look” category on the website.',
     ],
@@ -155,7 +155,7 @@ export const projects = [
     roles: 'Social Media · Web Optimisation · SEO',
     accent: 'cobalt',
     summary:
-      'Crafted the content strategy for a music studio — scheduling and optimising posts, sharpening the brand\'s social presence and SEO foundations.',
+      'Crafted the content strategy for a music studio, scheduling and optimising posts, sharpening the brand\'s social presence and SEO foundations.',
     impact: [
       'Improved visibility and a clearer content structure.',
       'Stronger, warmer community interaction.',
@@ -166,11 +166,11 @@ export const projects = [
   {
     id: '247',
     name: '247 Group',
-    location: 'Milan, Italy — Remote',
+    location: 'Milan, Italy · Remote',
     roles: 'SEO Writer · Catalog Specialist',
     accent: 'sage',
     summary:
-      'Optimised the Maranello online store — handling product-sheet writing and ensuring an SEO-sound catalog structure with real on-page clarity.',
+      'Optimised the Maranello online store, handling product-sheet writing and ensuring an SEO-sound catalog structure with real on-page clarity.',
     impact: [
       'Higher on-page clarity across the catalog.',
       'Improved organic performance.',
@@ -234,7 +234,7 @@ export const services = [
   {
     name: 'SEO Content Writing',
     tag: 'Reach',
-    desc: 'Intent-led, research-backed articles that blend storytelling with SEO — content to rank, resonate and build long-term brand authority.',
+    desc: 'Intent-led, research-backed articles that blend storytelling with SEO, content to rank, resonate and build long-term brand authority.',
     price: '₹3,500 – ₹5,500',
     unit: 'per article',
     accent: 'sage',
@@ -242,7 +242,7 @@ export const services = [
   {
     name: 'Email Marketing',
     tag: 'Add-on',
-    desc: 'Human, narrative email flows designed to nurture, convert and emotionally connect — with a voice that sounds like a person, not a funnel.',
+    desc: 'Human, narrative email flows designed to nurture, convert and emotionally connect, with a voice that sounds like a person, not a funnel.',
     price: '₹1,000+',
     unit: 'per email / flow',
     accent: 'amber',
@@ -250,9 +250,9 @@ export const services = [
 ];
 
 export const contact = {
-  headline: "Say hello — I don't bite.",
+  headline: "Say hello, I don't bite.",
   headlineAccent: 'Unless the copy is bad.',
-  lead: "I'd love to hear from you — whether it's a project, a question, or a quiet idea you're exploring.",
+  lead: "I'd love to hear from you, whether it's a project, a question, or a quiet idea you're exploring.",
   notes: [
     {
       title: 'If you\'re not sure where to start',

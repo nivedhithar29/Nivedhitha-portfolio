@@ -10,7 +10,7 @@ interface RevealProps {
 
 /**
  * Lightweight IntersectionObserver reveal. Pairs with the `.reveal`
- * styles in index.css — fades + lifts content into view on scroll.
+ * styles in index.css, fades + lifts content into view on scroll.
  */
 export default function Reveal({
   children,

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * The Lone Wave — a single fluid line that draws itself in.
+ * The Lone Wave, a single fluid line that draws itself in.
  * The brand's core mark, reused as a section divider / accent.
  */
 export default function WaveLine({

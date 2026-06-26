@@ -49,7 +49,7 @@ export default function Work() {
       <div className="section pt-24 md:pt-36 pb-12 md:pb-16">
         <div className="wrap">
           <Reveal className="flex items-center gap-4 mb-12 md:mb-16">
-            <span className="eyebrow text-teal">04 — Selected work</span>
+            <span className="eyebrow text-teal">04 · Selected work</span>
             <span className="hairline flex-1" />
           </Reveal>
           <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 items-end">
@@ -62,7 +62,7 @@ export default function Work() {
             <Reveal delay={1}>
               <p className="text-ink/70 leading-relaxed lg:pb-3 text-pretty">
                 From luxury trend reports in Milan to founder-led narratives and compliance-grade
-                research — a few rooms in the narrative house.
+                research, a few rooms in the narrative house.
               </p>
             </Reveal>
           </div>

@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className="mt-14 pt-7 border-t border-shell/15 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-shell/50 text-[0.78rem]">
-            © {year} {profile.name} · {profile.brand} — {profile.house}
+            © {year} {profile.name} · {profile.brand} · {profile.house}
           </p>
           <p className="text-shell/40 text-[0.72rem] uppercase tracking-[0.18em]">
             Designed with attention, not noise.

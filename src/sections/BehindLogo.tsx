@@ -3,6 +3,15 @@ import WaveLine from '../components/WaveLine';
 import { WaveGlyph } from '../components/Mark';
 import { logoMeanings, wordmark } from '../data/content';
 
+// Sunrise colours for each family initial (cool sea → warm sun),
+// readable on the deep-navy card. NI · RA · NU · LA
+const toneClass: Record<string, string> = {
+  navy: 'text-[#AAC4DA]',
+  teal: 'text-[#6FA8D6]',
+  gold: 'text-[#FACB73]',
+  coral: 'text-[#F89128]',
+};
+
 export default function BehindLogo() {
   return (
     <section id="logo" className="section relative py-24 md:py-36 bg-navy text-shell overflow-hidden">
@@ -16,7 +25,7 @@ export default function BehindLogo() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-          <span className="eyebrow text-cyan">03 — Behind the mark</span>
+          <span className="eyebrow text-cyan">03 · Behind the mark</span>
           <span className="h-px flex-1 bg-shell/20" />
         </Reveal>
 
@@ -34,7 +43,7 @@ export default function BehindLogo() {
             </Reveal>
             <Reveal delay={2}>
               <p className="text-shell/75 leading-relaxed max-w-md text-pretty">
-                One unbroken stroke — symbolising intuition, movement, and a quiet
+                One unbroken stroke, symbolising intuition, movement, and a quiet
                 &ldquo;lone-wolf&rdquo; creative energy. It bends without breaking; it knows when
                 to rise, and when to rest.
               </p>
@@ -45,16 +54,18 @@ export default function BehindLogo() {
           <Reveal delay={1} className="paper-card !bg-white/5 !border-white/15 rounded-3xl p-8 md:p-11">
             <p className="eyebrow text-cyan mb-6">{wordmark.title}</p>
             <div className="display text-5xl sm:text-6xl md:text-7xl tracking-[0.08em] leading-none">
-              <span className="text-shell/45">NI</span>
-              <span className="text-coral">RANU</span>
-              <span className="text-shell/45">LA</span>
+              {wordmark.initials.map((p) => (
+                <span key={p.letter} className={toneClass[p.tone]}>
+                  {p.letter}
+                </span>
+              ))}
             </div>
             <p className="mt-6 text-shell/70 text-pretty">{wordmark.body}</p>
 
             <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4">
               {wordmark.initials.map((p) => (
                 <div key={p.who} className="flex items-baseline gap-3">
-                  <span className="display text-3xl text-coral">{p.letter}</span>
+                  <span className={`display text-3xl ${toneClass[p.tone]}`}>{p.letter}</span>
                   <span className="text-[0.78rem] text-shell/65 leading-tight">{p.who}</span>
                 </div>
               ))}

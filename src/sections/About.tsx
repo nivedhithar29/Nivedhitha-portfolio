@@ -8,7 +8,7 @@ export default function About() {
     <section id="about" className="section relative py-24 md:py-36 bg-shell">
       <div className="wrap">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-          <span className="eyebrow text-teal">01 — About</span>
+          <span className="eyebrow text-teal">01 · About</span>
           <span className="hairline flex-1" />
         </Reveal>
 
@@ -56,7 +56,7 @@ export default function About() {
               <figure className="relative rounded-[2rem] overflow-hidden shadow-[0_40px_90px_-50px_rgba(19,57,81,0.65)]">
                 <img
                   src={portraitSrc}
-                  alt={`${profile.name}, founder of Niranula — The Narrative House`}
+                  alt={`${profile.name}, founder of Niranula · The Narrative House`}
                   loading="lazy"
                   className="w-full aspect-[4/5] object-cover object-top"
                   style={{ filter: 'saturate(0.96) contrast(1.02)' }}

@@ -18,7 +18,7 @@ export default function Approach() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-          <span className="eyebrow text-teal">02 — How I think &amp; work</span>
+          <span className="eyebrow text-teal">02 · How I think &amp; work</span>
           <span className="hairline flex-1" />
         </Reveal>
 
@@ -33,7 +33,7 @@ export default function Approach() {
             </Reveal>
             <Reveal delay={1}>
               <p className="mt-6 text-ink/70 max-w-sm leading-relaxed">
-                Five practices that turn a brand&apos;s noise into narrative — gentle, grounded,
+                Five practices that turn a brand&apos;s noise into narrative, gentle, grounded,
                 and quietly strategic.
               </p>
             </Reveal>

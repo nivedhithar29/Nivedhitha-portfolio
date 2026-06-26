@@ -16,7 +16,7 @@ export default function Services() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-12 md:mb-16">
-          <span className="eyebrow text-teal">05 — Services</span>
+          <span className="eyebrow text-teal">05 · Services</span>
           <span className="hairline flex-1" />
         </Reveal>
 
@@ -29,7 +29,7 @@ export default function Services() {
           </Reveal>
           <Reveal delay={1}>
             <p className="text-ink/70 leading-relaxed lg:pb-2 text-pretty">
-              Built around the brand&apos;s emotional core — from a single deep-dive session to a
+              Built around the brand&apos;s emotional core, from a single deep-dive session to a
               full narrative system. Pricing is indicative and shaped to the brief.
             </p>
           </Reveal>
@@ -79,7 +79,7 @@ export default function Services() {
             <a href="#contact" className="link-underline text-terracotta font-medium">
               Start with a hello
             </a>{' '}
-            — we&apos;ll shape it together.
+           , we&apos;ll shape it together.
           </p>
         </Reveal>
       </div>

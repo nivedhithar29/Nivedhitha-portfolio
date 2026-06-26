@@ -23,7 +23,7 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, #FFEFF0 0%, #FCEDEC 26%, #F8E2DE 46%, #F3D2CB 60%, #E9C2B9 72%)',
+            'linear-gradient(180deg, #FFF6EC 0%, #FFE6C2 22%, #FACB73 44%, #F89128 60%, #E07A1E 74%)',
         }}
       />
 
@@ -39,7 +39,7 @@ export default function Hero() {
         className="absolute inset-x-0 top-0 h-[72%] pointer-events-none"
         style={{
           background:
-            'linear-gradient(180deg, rgba(255,239,240,0.78) 0%, rgba(255,239,240,0.5) 45%, rgba(255,239,240,0.12) 80%, rgba(255,239,240,0) 100%)',
+            'linear-gradient(180deg, rgba(255,246,236,0.82) 0%, rgba(255,238,205,0.5) 45%, rgba(250,203,115,0.12) 80%, rgba(250,203,115,0) 100%)',
         }}
       />
 
