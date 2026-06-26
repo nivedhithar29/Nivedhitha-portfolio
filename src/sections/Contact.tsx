@@ -144,7 +144,7 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* wave finale — full-bleed across the viewport */}
+        {/* wave finale · full-bleed across the viewport */}
         <Reveal className="mt-24 md:mt-32 relative left-1/2 right-1/2 -mx-[50vw] w-screen max-w-[100vw]">
           <div className="relative h-40 md:h-60 overflow-hidden">
             <WaveBand className="absolute inset-0 w-full h-full" />
