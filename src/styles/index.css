@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   NIRANULA — The Narrative House
+   Design system: refined editorial luxury, ukiyo-e wave motif
+   ============================================================ */
+
+:root {
+  --shell: #ffeff0;
+  --shell-2: #fbe7ea;
+  --cream: #eed9c4;
+  --sand: #d9b99f;
+  --mist: #e8e5e5;
+  --silver: #d9d9d9;
+  --ink: #1a1a1a;
+  --navy: #133951;
+  --teal: #0e6973;
+  --sage: #a2c4ab;
+  --sage-soft: #bad9ce;
+  --aqua: #bae0da;
+  --cobalt: #032986;
+  --cyan: #59ccd9;
+  --coral: #f2aeb4;
+  --terracotta: #c9766a;
+  --gold: #f8d152;
+  --amber: #f0bf48;
+
+  --paper: #fbf6f1;
+  --hairline: rgba(19, 57, 81, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--shell);
+  color: var(--ink);
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+::selection {
+  background: var(--navy);
+  color: var(--shell);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--shell-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 999px;
+  border: 3px solid var(--shell-2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terracotta);
+}
+
+/* ---------- Type utilities ---------- */
+@layer components {
+  .display {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    line-height: 0.96;
+    letter-spacing: -0.02em;
+  }
+
+  .display-italic {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-optical-sizing: auto;
+  }
+
+  .script {
+    font-family: 'Caveat', cursive;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+
+  .eyebrow {
+    font-family: 'Hanken Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-weight: 600;
+    font-size: clamp(0.62rem, 0.9vw, 0.74rem);
+  }
+
+  /* Fluid display sizes */
+  .t-hero {
+    font-size: clamp(3.4rem, 14vw, 13rem);
+  }
+  .t-h1 {
+    font-size: clamp(2.4rem, 7vw, 5.5rem);
+  }
+  .t-h2 {
+    font-size: clamp(1.9rem, 4.6vw, 3.6rem);
+  }
+  .t-h3 {
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  }
+
+  /* Decorative thin rule */
+  .hairline {
+    height: 1px;
+    width: 100%;
+    background: var(--hairline);
+  }
+
+  /* Section wrapper */
+  .section {
+    position: relative;
+    padding-inline: clamp(1.25rem, 5vw, 5.5rem);
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+  }
+
+  /* Glass / paper card */
+  .paper-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 24px 60px -38px rgba(19, 57, 81, 0.4);
+  }
+
+  /* Link underline reveal */
+  .link-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Pill button */
+  .btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding: 0.85rem 1.6rem;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      background 0.4s ease,
+      color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+  .btn-pill:hover {
+    transform: translateY(-2px);
+  }
+  .btn-dark {
+    background: var(--navy);
+    color: var(--shell);
+    box-shadow: 0 18px 40px -22px rgba(19, 57, 81, 0.9);
+  }
+  .btn-dark:hover {
+    background: var(--ink);
+  }
+  .btn-ghost {
+    border: 1px solid var(--hairline);
+    color: var(--navy);
+  }
+  .btn-ghost:hover {
+    background: var(--navy);
+    color: var(--shell);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 60;
+    opacity: 0.04;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Reveal-on-scroll base (paired with IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal[data-delay='1'] {
+  transition-delay: 0.08s;
+}
+.reveal[data-delay='2'] {
+  transition-delay: 0.16s;
+}
+.reveal[data-delay='3'] {
+  transition-delay: 0.24s;
+}
+.reveal[data-delay='4'] {
+  transition-delay: 0.32s;
+}
+.reveal[data-delay='5'] {
+  transition-delay: 0.4s;
+}
