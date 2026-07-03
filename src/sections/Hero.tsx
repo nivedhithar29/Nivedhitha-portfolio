@@ -1,9 +1,50 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, Component, useState, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { WaveGlyph } from '../components/Mark';
+import WaveBand from '../components/WaveBand';
 import { hero, profile } from '../data/content';
 
 const WaveScene = lazy(() => import('../three/WaveScene'));
+
+/* Some browsers refuse to create a WebGL context (GPU blocklist,
+   hardware acceleration off, repeated context loss). Without a
+   boundary, the Canvas throwing during render would unmount the
+   whole app, so the ocean degrades to the static SVG wave instead. */
+class SceneBoundary extends Component<
+  { fallback: ReactNode; children: ReactNode },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  render() {
+    return this.state.failed ? this.props.fallback : this.props.children;
+  }
+}
+
+function supportsWebGL(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(
+      canvas.getContext('webgl2') ??
+        canvas.getContext('webgl') ??
+        canvas.getContext('experimental-webgl'),
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** Still-water stand-in: the layered SVG wave band on the horizon. */
+function StaticOcean() {
+  return (
+    <div className="absolute inset-x-0 bottom-0 h-[46%] pointer-events-none" aria-hidden="true">
+      <WaveBand className="absolute inset-0 w-full h-full" />
+    </div>
+  );
+}
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const container = {
@@ -16,6 +57,9 @@ const item = {
 };
 
 export default function Hero() {
+  const [webgl] = useState(supportsWebGL);
+  const [lost, setLost] = useState(false);
+
   return (
     <section id="top" className="relative min-h-[100svh] w-full overflow-hidden">
       {/* sunrise gradient base, stays exactly as is (brief §14) */}
@@ -27,11 +71,18 @@ export default function Hero() {
         }}
       />
 
-      {/* live 3D ocean, rises when the cursor moves */}
+      {/* live 3D ocean, rises when the cursor moves;
+          falls back to the still SVG wave when WebGL is unavailable */}
       <div className="absolute inset-0">
-        <Suspense fallback={null}>
-          <WaveScene />
-        </Suspense>
+        {webgl && !lost ? (
+          <SceneBoundary fallback={<StaticOcean />}>
+            <Suspense fallback={null}>
+              <WaveScene onContextLost={() => setLost(true)} />
+            </Suspense>
+          </SceneBoundary>
+        ) : (
+          <StaticOcean />
+        )}
       </div>
 
       {/* legibility veil over the horizon band */}

@@ -204,13 +204,29 @@ function Rig() {
   return null;
 }
 
-export default function WaveScene() {
+export default function WaveScene({ onContextLost }: { onContextLost?: () => void }) {
   return (
     <Canvas
       dpr={[1, 1.8]}
-      gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
+      gl={{
+        antialias: true,
+        alpha: true,
+        powerPreference: 'default',
+        // allow software rendering rather than refusing to start
+        failIfMajorPerformanceCaveat: false,
+      }}
       camera={{ position: [0, 0.95, 6.0], fov: 44, near: 0.1, far: 60 }}
       style={{ position: 'absolute', inset: 0 }}
+      onCreated={({ gl }) => {
+        gl.domElement.addEventListener(
+          'webglcontextlost',
+          (e) => {
+            e.preventDefault();
+            onContextLost?.();
+          },
+          false,
+        );
+      }}
     >
       <Suspense fallback={null}>
         <Ocean />
