@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { WaveGlyph } from '../components/Mark';
-import { profile } from '../data/content';
+import { hero, profile } from '../data/content';
 
 const WaveScene = lazy(() => import('../three/WaveScene'));
 
@@ -18,7 +18,7 @@ const item = {
 export default function Hero() {
   return (
     <section id="top" className="relative min-h-[100svh] w-full overflow-hidden">
-      {/* sky gradient base */}
+      {/* sunrise gradient base, stays exactly as is (brief §14) */}
       <div
         className="absolute inset-0"
         style={{
@@ -27,7 +27,7 @@ export default function Hero() {
         }}
       />
 
-      {/* live 3D ocean */}
+      {/* live 3D ocean, rises when the cursor moves */}
       <div className="absolute inset-0">
         <Suspense fallback={null}>
           <WaveScene />
@@ -48,36 +48,45 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 min-h-[100svh] flex flex-col items-center justify-start text-center section pt-[16vh] md:pt-[15vh]"
+        className="relative z-10 min-h-[100svh] flex flex-col items-center justify-start text-center section pt-[14vh] md:pt-[13vh]"
       >
+        {/* the wave crown */}
         <motion.div variants={item}>
-          <WaveGlyph className="w-16 md:w-20 mx-auto text-teal/90" strokeWidth={2} />
+          <WaveGlyph className="w-14 md:w-20 mx-auto text-navy/80" strokeWidth={2} />
         </motion.div>
 
+        {/* wordmark: Fraunces thin, wide letter-spacing, full contrast */}
         <motion.h1
           variants={item}
-          className="display t-hero text-navy mt-5 md:mt-7"
-          style={{ fontWeight: 500 }}
+          className="wordmark t-hero text-navy mt-4 md:mt-6 pl-[0.22em]"
         >
           NIRANULA
         </motion.h1>
 
-        <motion.p variants={item} className="script text-4xl sm:text-5xl md:text-6xl -mt-2 md:-mt-4">
+        {/* deep navy script, never again on a same-hue ground */}
+        <motion.p variants={item} className="script text-4xl sm:text-5xl md:text-6xl mt-1 md:mt-0">
           The Narrative House
         </motion.p>
 
-        <motion.div variants={item} className="mt-9 md:mt-11 flex items-center gap-4 text-ink/70">
-          <span className="hidden sm:block h-px w-10 bg-ink/25" />
-          <span className="eyebrow text-ink/80">{profile.name}</span>
-          <span className="hidden sm:block h-px w-10 bg-ink/25" />
-        </motion.div>
+        <motion.p
+          variants={item}
+          className="mt-9 md:mt-12 text-ink/85 text-base sm:text-lg tracking-[0.02em]"
+        >
+          {hero.intro}
+        </motion.p>
 
         <motion.p
           variants={item}
-          className="mt-4 max-w-xl text-[0.82rem] sm:text-sm tracking-[0.04em] text-ink/65"
+          className="display-italic text-navy text-xl sm:text-2xl md:text-[1.75rem] max-w-2xl mt-3 text-balance leading-snug"
         >
-          {profile.disciplines.join('  ·  ')}
+          {hero.line}
         </motion.p>
+
+        <motion.div variants={item} className="mt-8 md:mt-10 flex items-center gap-4 text-ink/70">
+          <span className="hidden sm:block h-px w-10 bg-ink/25" />
+          <span className="eyebrow text-ink/80">{profile.disciplines.join('  ·  ')}</span>
+          <span className="hidden sm:block h-px w-10 bg-ink/25" />
+        </motion.div>
       </motion.div>
 
       {/* scroll cue */}
@@ -91,7 +100,7 @@ export default function Hero() {
       >
         <span className="text-[0.6rem] uppercase tracking-[0.3em]">Scroll</span>
         <span className="relative block h-9 w-px overflow-hidden bg-ink/20">
-          <span className="absolute inset-0 block bg-terracotta animate-[scrolldot_2s_ease-in-out_infinite]" />
+          <span className="absolute inset-0 block bg-navy animate-[scrolldot_2s_ease-in-out_infinite]" />
         </span>
       </motion.a>
 

@@ -4,31 +4,27 @@
 
 /* ============================================================
    NIRANULA · The Narrative House
-   Design system: refined editorial luxury, ukiyo-e wave motif
+   Editorial system: blush ground, charcoal ink, antique gold,
+   wordmark navy. The wave is the only flourish that repeats.
    ============================================================ */
 
 :root {
-  --shell: #fff6ec;
-  --shell-2: #ffeed6;
-  --cream: #facb73;
-  --sand: #cfb793;
-  --mist: #f0e7d8;
-  --silver: #ded3c2;
-  --ink: #243b53;
-  --navy: #06346f;
-  --teal: #577a9a;
-  --sage: #cfb793;
-  --sage-soft: #e0cfad;
-  --aqua: #aac4da;
-  --cobalt: #06346f;
-  --cyan: #facb73;
-  --coral: #f89128;
-  --terracotta: #f89128;
-  --gold: #facb73;
-  --amber: #f89128;
+  --shell: #ffeff0; /* blush background */
+  --blush-deep: #f9e2e4;
+  --ink: #1c1917; /* near-black, warm undertone */
+  --grey: #6b6560; /* warm secondary text */
+  --gold: #c8a97e; /* warm sand / antique gold */
+  --gold-deep: #8f6b3f;
+  --navy: #1c2b5e; /* NIRANULA wordmark navy */
 
-  --paper: #fff7ea;
-  --hairline: rgba(6, 52, 111, 0.16);
+  /* sunrise tones, reserved for the hero + wave band */
+  --coral: #f89128;
+  --cream: #facb73;
+  --sea: #577a9a;
+  --sea-deep: #06346f;
+
+  --paper: #fff7f4;
+  --hairline: rgba(28, 25, 23, 0.14);
 }
 
 * {
@@ -76,15 +72,15 @@ body {
   width: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--shell-2);
+  background: var(--blush-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--sand);
+  background: var(--gold);
   border-radius: 999px;
-  border: 3px solid var(--shell-2);
+  border: 3px solid var(--blush-deep);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--terracotta);
+  background: var(--gold-deep);
 }
 
 /* ---------- Type utilities ---------- */
@@ -104,10 +100,23 @@ body {
     font-optical-sizing: auto;
   }
 
+  /* Wordmark: Fraunces thin, wide letter-spacing, matches the PDF cover */
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    line-height: 1;
+  }
+
+  /* Handwriting accent. Deep navy by default, never on a same-hue ground. */
   .script {
     font-family: 'Caveat', cursive;
-    color: var(--terracotta);
+    color: var(--navy);
     line-height: 1;
+  }
+  .script-gold {
+    color: var(--gold-deep);
   }
 
   .eyebrow {
@@ -120,7 +129,7 @@ body {
 
   /* Fluid display sizes */
   .t-hero {
-    font-size: clamp(3.4rem, 14vw, 13rem);
+    font-size: clamp(3rem, 13vw, 12rem);
   }
   .t-h1 {
     font-size: clamp(2.4rem, 7vw, 5.5rem);
@@ -132,7 +141,7 @@ body {
     font-size: clamp(1.3rem, 2.4vw, 1.9rem);
   }
 
-  /* Decorative thin rule */
+  /* Decorative thin rule, section breath */
   .hairline {
     height: 1px;
     width: 100%;
@@ -153,12 +162,12 @@ body {
 
   /* Glass / paper card */
   .paper-card {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.5));
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.65);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.8) inset,
-      0 24px 60px -38px rgba(6, 52, 111, 0.4);
+      0 24px 60px -38px rgba(28, 25, 23, 0.4);
   }
 
   /* Link underline reveal */
@@ -206,7 +215,7 @@ body {
   .btn-dark {
     background: var(--navy);
     color: var(--shell);
-    box-shadow: 0 18px 40px -22px rgba(6, 52, 111, 0.9);
+    box-shadow: 0 18px 40px -22px rgba(28, 43, 94, 0.9);
   }
   .btn-dark:hover {
     background: var(--ink);
@@ -218,6 +227,55 @@ body {
   .btn-ghost:hover {
     background: var(--navy);
     color: var(--shell);
+  }
+
+  /* Arched frame, the Starseed-reference portrait treatment */
+  .arch-frame {
+    border-radius: 999px 999px 1.4rem 1.4rem;
+    overflow: hidden;
+  }
+  .oval-frame {
+    border-radius: 50% / 42%;
+    overflow: hidden;
+  }
+
+  /* 3D tilt cards (paired with the Tilt component) */
+  .tilt-wrap {
+    perspective: 1100px;
+  }
+  .tilt-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: box-shadow 0.5s ease;
+  }
+  .tilt-card .tilt-raise {
+    transform: translateZ(34px);
+  }
+
+  /* Horizontal scroll strip (heritage) */
+  .h-scroll {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+  }
+  .h-scroll > * {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+  .h-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .h-scroll::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border: none;
+  }
+  .h-scroll::-webkit-scrollbar-track {
+    background: transparent;
   }
 }
 

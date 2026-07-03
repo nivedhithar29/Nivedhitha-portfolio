@@ -3,6 +3,7 @@ import Reveal from '../components/Reveal';
 import { WaveGlyph } from '../components/Mark';
 import WaveBand from '../components/WaveBand';
 import { contact, profile } from '../data/content';
+import { playSwell } from '../lib/audio';
 
 function MailIcon() {
   return (
@@ -30,29 +31,34 @@ function PinIcon() {
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [scoreHeard, setScoreHeard] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const subject = encodeURIComponent(`Hello from ${form.name || 'a new friend'}, via Niranula`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n- ${form.name}\n${form.email}`,
-    );
+    const body = encodeURIComponent(`${form.message}\n\n- ${form.name}\n${form.email}`);
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
   };
 
+  // the dramatic turnaround: a 2–3 s cinematic swell on hover/touch
+  const cueTheScore = () => {
+    playSwell();
+    setScoreHeard(true);
+  };
+
   const field =
-    'w-full bg-transparent border-b border-navy/20 py-3 text-navy placeholder:text-navy/35 focus:outline-none focus:border-terracotta transition-colors';
+    'w-full bg-transparent border-b border-ink/25 py-3 text-navy placeholder:text-grey/60 focus:outline-none focus:border-gold-deep transition-colors';
 
   return (
     <section id="contact" className="section relative pt-24 md:pt-36 pb-0 bg-shell overflow-hidden">
       <div className="wrap relative">
         <Reveal className="text-center mb-16 md:mb-24">
-          <WaveGlyph className="w-16 mx-auto text-teal/80 mb-7" strokeWidth={2} />
+          <WaveGlyph className="w-16 mx-auto text-gold mb-7" strokeWidth={2} />
           <h2 className="display t-h1 text-navy text-balance max-w-4xl mx-auto leading-[0.98]">
             {contact.headline}
           </h2>
-          <p className="script text-3xl md:text-5xl mt-3">{contact.headlineAccent}</p>
-          <p className="mt-8 max-w-xl mx-auto text-ink/70 leading-relaxed text-pretty">
+          <p className="script text-3xl md:text-5xl mt-4">{contact.headlineAccent}</p>
+          <p className="mt-8 max-w-xl mx-auto text-grey leading-relaxed text-pretty">
             {contact.lead}
           </p>
         </Reveal>
@@ -62,7 +68,7 @@ export default function Contact() {
           <Reveal>
             <form onSubmit={onSubmit} className="space-y-7">
               <div>
-                <label className="eyebrow text-teal block mb-2">Your name</label>
+                <label className="eyebrow text-gold-deep block mb-2">Your name</label>
                 <input
                   className={field}
                   type="text"
@@ -73,7 +79,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="eyebrow text-teal block mb-2">Email</label>
+                <label className="eyebrow text-gold-deep block mb-2">Email</label>
                 <input
                   className={field}
                   type="email"
@@ -84,7 +90,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="eyebrow text-teal block mb-2">The starting point</label>
+                <label className="eyebrow text-gold-deep block mb-2">The starting point</label>
                 <textarea
                   className={`${field} resize-none`}
                   rows={3}
@@ -106,24 +112,24 @@ export default function Contact() {
             <div className="space-y-4">
               <a
                 href={`mailto:${profile.email}`}
-                className="group flex items-center gap-4 text-navy hover:text-terracotta transition-colors"
+                className="group flex items-center gap-4 text-navy hover:text-gold-deep transition-colors"
               >
-                <span className="grid place-items-center h-10 w-10 rounded-full border border-navy/15 group-hover:border-terracotta/40 transition-colors">
+                <span className="grid place-items-center h-10 w-10 rounded-full border border-ink/15 group-hover:border-gold transition-colors">
                   <MailIcon />
                 </span>
                 <span className="link-underline">{profile.email}</span>
               </a>
               <a
                 href={`tel:${profile.phone.replace(/\s/g, '')}`}
-                className="group flex items-center gap-4 text-navy hover:text-terracotta transition-colors"
+                className="group flex items-center gap-4 text-navy hover:text-gold-deep transition-colors"
               >
-                <span className="grid place-items-center h-10 w-10 rounded-full border border-navy/15 group-hover:border-terracotta/40 transition-colors">
+                <span className="grid place-items-center h-10 w-10 rounded-full border border-ink/15 group-hover:border-gold transition-colors">
                   <PhoneIcon />
                 </span>
                 <span className="link-underline">{profile.phone}</span>
               </a>
               <div className="flex items-center gap-4 text-navy">
-                <span className="grid place-items-center h-10 w-10 rounded-full border border-navy/15">
+                <span className="grid place-items-center h-10 w-10 rounded-full border border-ink/15">
                   <PinIcon />
                 </span>
                 <span>{profile.location}</span>
@@ -131,15 +137,42 @@ export default function Contact() {
             </div>
 
             <div className="space-y-5 pt-2">
-              {contact.notes.map((n) => (
-                <div key={n.title} className="rounded-2xl bg-white/55 border border-navy/10 p-5">
-                  <h3 className="display text-lg text-terracotta mb-1.5">{n.title}</h3>
-                  <p className="text-ink/70 text-[0.88rem] leading-relaxed text-pretty">{n.body}</p>
-                </div>
-              ))}
-              <p className="script text-2xl text-terracotta/90 pl-1">
-                p.s. travel? {profile.travel.toLowerCase()}
-              </p>
+              {contact.notes.map((n) =>
+                n.cinematic ? (
+                  <div
+                    key={n.title}
+                    onMouseEnter={cueTheScore}
+                    onTouchStart={cueTheScore}
+                    className="group rounded-2xl bg-white/60 border border-ink/10 hover:border-gold/60 p-5 transition-colors duration-500 cursor-default"
+                  >
+                    <h3 className="display text-lg text-gold-deep mb-1.5 flex items-center gap-2">
+                      {n.title}
+                      <span aria-hidden className="text-[0.65rem] tracking-[0.18em] uppercase text-grey/70 font-body font-medium">
+                        · hover for the score
+                      </span>
+                    </h3>
+                    <p className="text-ink/75 text-[0.88rem] leading-relaxed text-pretty">{n.body}</p>
+                    <p
+                      aria-live="polite"
+                      className={`script text-xl mt-3 transition-all duration-700 ${
+                        scoreHeard ? 'opacity-90 translate-y-0' : 'opacity-0 translate-y-1'
+                      }`}
+                    >
+                      {n.hoverNote}
+                    </p>
+                  </div>
+                ) : (
+                  <div key={n.title} className="rounded-2xl bg-white/60 border border-ink/10 p-5">
+                    <h3 className="display text-lg text-gold-deep mb-1.5">{n.title}</h3>
+                    <p className="text-ink/75 text-[0.88rem] leading-relaxed text-pretty">{n.body}</p>
+                  </div>
+                ),
+              )}
+
+              <div className="pl-1">
+                <p className="script text-2xl leading-snug">{contact.ps}</p>
+                <p className="eyebrow text-gold-deep mt-3">({contact.psNote})</p>
+              </div>
             </div>
           </Reveal>
         </div>

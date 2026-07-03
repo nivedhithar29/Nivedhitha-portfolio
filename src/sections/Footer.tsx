@@ -15,7 +15,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow text-cyan mb-4">Explore</p>
+            <p className="eyebrow text-gold mb-4">Explore</p>
             <ul className="space-y-2.5">
               {nav.map((n) => (
                 <li key={n.id}>
@@ -28,7 +28,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="eyebrow text-cyan mb-4">Say hello</p>
+            <p className="eyebrow text-gold mb-4">Say hello</p>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <a href={`mailto:${profile.email}`} className="link-underline text-shell/75 hover:text-shell">

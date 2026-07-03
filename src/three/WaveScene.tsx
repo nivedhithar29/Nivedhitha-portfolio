@@ -3,13 +3,18 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 
 /* ------------------------------------------------------------------
-   The Lone Wave, a calm, flowing ukiyo-e ocean rendered in GLSL.
-   Coral horizon, teal water, soft foam crests. The signature motif.
+   The Lone Wave, a calm, flowing ocean rendered in GLSL.
+   Coral horizon, deep-sea troughs, soft foam crests.
+
+   Cursor-responsive (brief §05): as the pointer moves, wave
+   amplitude rises and the water swells locally under the cursor,
+   like the ocean noticing you. It settles back when you rest.
 ------------------------------------------------------------------ */
 
 const vertexShader = /* glsl */ `
   uniform float uTime;
   uniform vec2 uMouse;
+  uniform float uBoost;
   varying float vElevation;
   varying vec2 vUv;
 
@@ -29,6 +34,14 @@ const vertexShader = /* glsl */ `
     float t = uTime;
     vec2 coord = pos.xy * 0.62 + uMouse * 0.5;
     float e = waveField(coord, t);
+
+    // the ocean notices you: cursor movement raises the whole field
+    e *= 1.0 + uBoost * 0.9;
+
+    // and swells locally beneath the pointer
+    vec2 mouseOnPlane = uMouse * vec2(9.0, -5.5);
+    float d = distance(pos.xy, mouseOnPlane);
+    e += uBoost * 0.55 * exp(-d * d * 0.14) * sin(t * 2.2 + d * 1.6);
 
     // calmer toward the horizon (far edge), fuller in the foreground
     float depth = smoothstep(0.0, 1.0, uv.y);
@@ -86,12 +99,15 @@ function Ocean() {
   const matRef = useRef<THREE.ShaderMaterial>(null);
   const mouse = useRef(new THREE.Vector2(0, 0));
   const target = useRef(new THREE.Vector2(0, 0));
+  const boost = useRef(0);
+  const boostTarget = useRef(0);
   const { size } = useThree();
 
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
+      uBoost: { value: 0 },
       uDeep: { value: hex('#06346F') },
       uMid: { value: hex('#577A9A') },
       uSky: { value: hex('#FFF1DA') },
@@ -108,9 +124,22 @@ function Ocean() {
     [],
   );
 
-  // pointer parallax
+  // pointer parallax + velocity, movement feeds the swell
   useEffect(() => {
+    let lastX = 0;
+    let lastY = 0;
+    let lastT = performance.now();
     const onMove = (e: PointerEvent) => {
+      const now = performance.now();
+      const dt = Math.max(now - lastT, 8);
+      const dx = e.clientX - lastX;
+      const dy = e.clientY - lastY;
+      const speed = Math.hypot(dx, dy) / dt; // px per ms
+      boostTarget.current = Math.min(boostTarget.current + speed * 0.35, 1.2);
+      lastX = e.clientX;
+      lastY = e.clientY;
+      lastT = now;
+
       target.current.set(
         (e.clientX / window.innerWidth - 0.5) * 2,
         (e.clientY / window.innerHeight - 0.5) * 2,
@@ -126,6 +155,11 @@ function Ocean() {
     m.uniforms.uTime.value += reduced ? delta * 0.12 : delta * 0.6;
     mouse.current.lerp(target.current, 0.04);
     (m.uniforms.uMouse.value as THREE.Vector2).copy(mouse.current);
+
+    // the swell decays back to calm when the cursor rests
+    boostTarget.current *= Math.pow(0.14, delta);
+    boost.current += (boostTarget.current - boost.current) * Math.min(delta * 4, 1);
+    m.uniforms.uBoost.value = reduced ? 0 : boost.current;
   });
 
   // denser geometry on wider viewports

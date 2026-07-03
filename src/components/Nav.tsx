@@ -44,13 +44,13 @@ export default function Nav() {
           <Mark />
 
           {/* desktop */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-7">
             {nav.map((n) => (
               <a
                 key={n.id}
                 href={`#${n.id}`}
                 className={`link-underline text-[0.82rem] tracking-wide transition-colors ${
-                  active === n.id ? 'text-terracotta' : 'text-ink/70 hover:text-ink'
+                  active === n.id ? 'text-gold-deep' : 'text-ink/70 hover:text-ink'
                 }`}
               >
                 {n.label}

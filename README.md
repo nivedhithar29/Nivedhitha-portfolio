@@ -12,13 +12,16 @@ live in WebGL — and a soft, ukiyo-e-inspired pastel palette.
 
 ## Design language
 
-- **Aesthetic** — refined editorial luxury; generous negative space, high-contrast serif display
-  type, handwritten coral annotations, and a Japanese wave (ukiyo-e) motif.
+- **Aesthetic** — refined editorial luxury; generous negative space, oversized Fraunces display
+  type, handwritten navy annotations, thin hairlines as section breath, and the lone-wave motif.
 - **Signature** — the hero ocean is a custom GLSL shader (layered wave field + foam crests) echoing
-  the Niranula logo: a single, fluid line.
-- **Type** — _Fraunces_ (display serif), _Hanken Grotesk_ (body), _Caveat_ (script accent).
-- **Palette** — the full Niranula swatch set as CSS variables (shell pink, cream, teal, navy, sage,
-  coral, gold…).
+  the Niranula logo: a single, fluid line. It rises when the cursor moves — the ocean noticing you.
+- **Sound** — an ambient ocean bed and a cinematic contact-section swell, both synthesised live
+  with the Web Audio API (muted by default, wave-bar toggle bottom-right).
+- **Type** — _Fraunces_ (display serif; the wordmark at thin 300 with wide letter-spacing),
+  _Hanken Grotesk_ (body), _Caveat_ (script accent, used sparingly).
+- **Palette** — blush ground `#FFEFF0`, warm charcoal ink `#1C1917`, antique gold `#C8A97E`,
+  wordmark navy `#1C2B5E`; the sunrise gradient is reserved for the hero and wave band.
 
 ## Tech stack
 
@@ -44,9 +47,11 @@ npm run preview  # preview the production build
 
 ```
 src/
-  components/   Nav, Mark, WaveLine, Reveal — shared UI + brand marks
-  sections/     Hero · About · Approach · BehindLogo · Work · Services · Contact · Footer
-  three/        WaveScene — the WebGL lone-wave ocean (GLSL shaders)
+  components/   Nav, Mark, WaveLine, Reveal, Ticker, Tilt, SoundToggle — shared UI + brand marks
+  sections/     Hero · About · Approach · BehindLogo · Work · Heritage · Services · Lister ·
+                Contact · Footer
+  three/        WaveScene — the WebGL lone-wave ocean (GLSL shaders, cursor-reactive)
+  lib/          audio.ts — Web Audio ocean ambience + cinematic swell (no audio binaries)
   data/         content.ts — single source of truth for all copy
   styles/       index.css — design system, tokens, type utilities
 public/

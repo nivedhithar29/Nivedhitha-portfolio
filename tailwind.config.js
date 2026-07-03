@@ -4,25 +4,36 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Sunrise-on-the-beach palette
-        // #f89128 sun · #facb73 glow · #cfb793 sand · #577a9a sea · #06346f deep
-        shell: '#FFF6EC',
+        // NIRANULA editorial palette (redesign brief v3.1)
+        // blush ground · charcoal ink · antique gold accent · wordmark navy
+        // The hero keeps its sunrise gradient; these govern everything else.
+        shell: '#FFEFF0', // blush background
+        blush: '#FFEFF0',
+        'blush-deep': '#F9E2E4',
+        paper: '#FFF7F4',
+        ink: '#1C1917', // near-black, warm undertone
+        grey: '#6B6560', // warm secondary text
+        gold: '#C8A97E', // warm sand / antique gold
+        'gold-deep': '#8F6B3F', // gold dark enough for text on blush
+        navy: '#1C2B5E', // NIRANULA wordmark navy
+
+        // sunrise tones, hero + wave band only
+        coral: '#F89128',
         cream: '#FACB73',
-        sand: '#CFB793',
-        mist: '#F0E7D8',
-        silver: '#DED3C2',
-        ink: '#243B53',
-        navy: '#06346F',
-        teal: '#577A9A',
-        sage: '#CFB793',
+        sea: '#577A9A',
+        'sea-deep': '#06346F',
+
+        // legacy aliases kept so no stray class silently breaks
+        teal: '#6B6560',
+        sage: '#C8A97E',
         'sage-soft': '#E0CFAD',
         aqua: '#AAC4DA',
-        cobalt: '#06346F',
-        cyan: '#FACB73',
-        coral: '#F89128',
-        terracotta: '#F89128',
-        gold: '#FACB73',
-        amber: '#F89128',
+        cobalt: '#1C2B5E',
+        cyan: '#C8A97E',
+        terracotta: '#8F6B3F',
+        amber: '#8F6B3F',
+        mist: '#F9E2E4',
+        silver: '#DED3C2',
       },
       fontFamily: {
         display: ['Fraunces', 'serif'],
@@ -31,6 +42,7 @@ export default {
       },
       letterSpacing: {
         label: '0.32em',
+        wordmark: '0.24em',
       },
       maxWidth: {
         editorial: '1240px',
@@ -52,11 +64,17 @@ export default {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both',
         'float-slow': 'float-slow 7s ease-in-out infinite',
         marquee: 'marquee 38s linear infinite',
+        'marquee-slow': 'marquee 56s linear infinite',
+        'marquee-reverse': 'marquee-reverse 46s linear infinite',
       },
     },
   },
