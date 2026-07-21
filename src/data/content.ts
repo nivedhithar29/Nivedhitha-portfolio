@@ -51,62 +51,62 @@ export const nav = [
 ];
 
 export const about = {
+  // Original About copy, restored. The only addition is the name line.
   hi: "Hi, I'm Nivedhitha. You can call me Nivi.",
   kicker: 'a little about me',
-  // Quiet monologue. Each entry is a stanza; blank lines between stanzas.
+  lead: "Not just to what it means, but to what it feels, and what it's trying (sometimes awkwardly) to become.",
   body: [
-    'I notice things.\nProbably more than I should.',
-    'The sentence a founder repeats three times.\nThe review everyone skips because it’s too long.\nThe customer who says,\n“I can’t explain it... it just felt right.”',
-    'Those are the moments I pay attention to.',
-    'Because I’ve realised brands rarely struggle because they lack ideas.\nThey struggle because somewhere between what they mean...\nand what people experience...\nsomething gets lost.',
-    'That’s the part I like untangling.',
-    'I spend an unreasonable amount of time listening.\nTo founders.\nTo culture.\nTo conversations.\nTo the awkward sentence someone says halfway through a meeting\nthat accidentally explains the entire business.',
-    'That’s usually where the real strategy lives.\nThe rest is just helping people hear it too.',
+    'I work at the intersection of story, culture and strategy.',
+    'I help brands find emotional clarity in the way they communicate, in a way that feels human, honest and true to who they are.',
+    "I'm not loud. I'm not flashy. I don't believe in over-polish or pretense. I believe in attention.",
   ],
   signature: 'Story-led Communication Specialist',
 };
 
-/* How I think & work
-   Left column: the Southwave anchor + an intro on what shaped the work.
-   Right column: five practices, each in a spoken, unhurried voice. */
+/* How I think & work — original two-column design, shortened content.
+   Left column: a concise heading + a one-paragraph intro.
+   Right column: five practices, each a short italic lead + a line of body. */
 export const approach = {
-  anchor:
-    'The Southwave founder told me the post was exactly right.\nI had rewritten it four times before sending it.\nNo one knew that.\nThat’s how I work.',
-  intro: [
-    'A few things I’ve learned by paying attention.',
-    'Every project has changed the way I think.',
-    'Working at Fashionbi taught me that trends are rarely just trends.\nThey’re reflections of culture, behaviour, and shifting identities.',
-    'At DHPL, I realised strategy isn’t only about markets, research,\nor international expansion.\nIt’s about understanding who a business is becoming\nbefore deciding how it should communicate.',
-    'Working with brands like d’you, Southwave, Studio Uno, Salt Studio,\nand studying brands like Valentino reminded me\nthat people don’t remember the loudest story.\nThey remember the truest one.',
-    'Those experiences eventually became the way I work.',
-  ],
+  heading: 'A way of working that stays human.',
+  intro:
+    'A few things I’ve learned by paying attention, from luxury trend rooms in Milan to founder-led brands at home. Five practices, gentle, grounded, quietly strategic.',
 };
 
 export const pillars = [
   {
     no: '01',
     title: 'Emotional Brand Strategy',
-    body: 'One of the biggest lessons I took from DHPL\ncame from working on research-heavy projects.\nOn paper, it was about international markets,\nsupplier ecosystems, and compliance.\nIn reality, it always came back to one question:\n“Who are we trying to become?”\n\nThat’s still where I begin.\nBefore messaging.\nBefore positioning.\nBefore content.\n\nBecause the strongest brands don’t start with communication.\nThey start with clarity.',
+    lead: 'Before messaging or positioning, I begin with one question: who are we trying to become?',
+    body: 'The strongest brands don’t start with communication. They start with clarity.',
+    tone: 'navy',
   },
   {
     no: '02',
     title: 'Story-Led Content Systems',
-    body: 'At Fashionbi, I wasn’t writing isolated articles.\nOne week it was Giorgio Armani.\nAnother week it was luxury and sports.\nThen it was beauty, consumer behaviour, or digital culture.\nEvery piece became part of a larger conversation.\n\nThat’s why I don’t build content calendars.\nI build narrative systems.\n\nBecause people rarely remember individual posts.\nThey remember patterns.',
+    lead: 'I don’t build content calendars. I build narrative systems.',
+    body: 'Because people rarely remember individual posts. They remember patterns.',
+    tone: 'gold',
   },
   {
     no: '03',
     title: 'Culture & Consumer Behaviour',
-    body: 'Working on brands like d’you taught me\nthat products aren’t always the story.\nCulture is.\n\nWhen The Base Camp launched,\nwhat interested me wasn’t the campaign itself.\nIt was why it felt so relevant at that particular moment.\nPeople weren’t looking for polished founders anymore.\nThey were looking for honesty.\n\nThat’s why I spend so much time paying attention to\nfashion, internet culture, films, cafés, comment sections,\nand everyday conversations.\n\nTrends change quickly.\nHuman behaviour changes much more slowly.',
+    lead: 'Products aren’t always the story. Culture is.',
+    body: 'Trends change quickly. Human behaviour changes slowly, so that’s what I watch.',
+    tone: 'navy',
   },
   {
     no: '04',
     title: 'Founder Voice & Creative Copy',
-    body: 'Whether I was writing about Southwave, Studio Uno, or Salt Studio,\nI realised something.\nNo founder actually wants prettier copy.\nThey want language that finally sounds like them.\n\nThat’s the part I enjoy most.\nListening long enough to notice what makes someone different...\nand making sure the brand sounds like it couldn’t have been\nwritten for anyone else.',
+    lead: 'No founder wants prettier copy. They want language that finally sounds like them.',
+    body: 'I listen long enough to notice what makes you different, then make sure the brand couldn’t have been written for anyone else.',
+    tone: 'gold',
   },
   {
     no: '05',
     title: 'AI-Aided Research & Thinking',
-    body: 'AI has become one of my favourite collaborators.\nNot because it replaces thinking.\nBecause it gives me more time for it.\n\nAt DHPL, I used it to support international research,\ncompliance documentation, SEO,\nsupplier verification, and internal workflows.\n\nToday, I use it the same way.\nTo research faster.\nSpot patterns sooner.\nAsk better questions.\n\nThe technology helps me organise information.\nThe story still comes from people.',
+    lead: 'AI is a collaborator, not a replacement. It gives me more time to think.',
+    body: 'It helps me research faster and spot patterns sooner. The story still comes from people.',
+    tone: 'navy',
   },
 ];
 

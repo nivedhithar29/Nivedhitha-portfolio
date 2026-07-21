@@ -37,19 +37,11 @@ function supportsWebGL(): boolean {
   }
 }
 
-/** Still-water stand-in: the layered SVG wave band on the horizon,
- *  in the sunrise palette so it bridges into the blush section below.
- *  Gently animated so non-WebGL visitors still get a living tide. */
+/** Still-water stand-in: the layered SVG wave band on the horizon. */
 function StaticOcean() {
   return (
-    <div className="absolute inset-x-0 bottom-0 h-[52%] pointer-events-none" aria-hidden="true">
-      <WaveBand className="absolute inset-0 w-full h-full animate-[tide_9s_ease-in-out_infinite]" variant="sunrise" />
-      <style>{`
-        @keyframes tide {
-          0%, 100% { transform: translateY(0) scaleY(1); }
-          50% { transform: translateY(-2%) scaleY(1.03); }
-        }
-      `}</style>
+    <div className="absolute inset-x-0 bottom-0 h-[46%] pointer-events-none" aria-hidden="true">
+      <WaveBand className="absolute inset-0 w-full h-full" />
     </div>
   );
 }
@@ -99,17 +91,6 @@ export default function Hero() {
         style={{
           background:
             'linear-gradient(180deg, rgba(255,246,236,0.82) 0%, rgba(255,238,205,0.5) 45%, rgba(250,203,115,0.12) 80%, rgba(250,203,115,0) 100%)',
-        }}
-      />
-
-      {/* palette bridge: the warm sunrise resolves into the exact blush
-          (#FFEFF0) the About section opens with, so the scroll feels like
-          a tide coming in, not a colour collision (brief · hero §2) */}
-      <div
-        className="absolute inset-x-0 bottom-0 h-[42%] pointer-events-none"
-        style={{
-          background:
-            'linear-gradient(180deg, rgba(255,239,240,0) 0%, rgba(255,245,230,0.55) 52%, #FFF5E6 80%, #FFEFF0 100%)',
         }}
       />
 
