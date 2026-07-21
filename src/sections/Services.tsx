@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Reveal from '../components/Reveal';
-import { services } from '../data/content';
+import ServiceModal from '../components/ServiceModal';
+import { services, type Service } from '../data/content';
 
 const numberWords = ['one', 'two', 'three', 'four', 'five'];
 
 export default function Services() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [modal, setModal] = useState<Service | null>(null);
 
   return (
     <section id="services" className="section relative py-24 md:py-36 bg-paper overflow-hidden">
@@ -37,10 +39,12 @@ export default function Services() {
             const open = openIdx === i;
             return (
               <Reveal
-                key={s.name}
+                key={s.id}
                 delay={(Math.min(i, 4)) as 0 | 1 | 2 | 3 | 4}
                 className={`rounded-3xl bg-white/60 border transition-all duration-500 ${
-                  open ? 'border-gold/70 bg-white/85 shadow-[0_30px_70px_-50px_rgba(28,25,23,0.45)]' : 'border-ink/10 hover:border-gold/50 hover:bg-white/75'
+                  open
+                    ? 'border-gold/70 bg-white/85 shadow-[0_30px_70px_-50px_rgba(28,25,23,0.45)]'
+                    : 'border-ink/10 hover:border-gold/50 hover:bg-white/75'
                 }`}
               >
                 <button
@@ -72,9 +76,7 @@ export default function Services() {
                   <span
                     aria-hidden="true"
                     className={`grid place-items-center h-10 w-10 rounded-full border transition-all duration-500 shrink-0 ${
-                      open
-                        ? 'rotate-45 border-navy bg-navy text-shell'
-                        : 'border-ink/20 text-navy'
+                      open ? 'rotate-45 border-navy bg-navy text-shell' : 'border-ink/20 text-navy'
                     }`}
                   >
                     +
@@ -91,13 +93,22 @@ export default function Services() {
                     <div className="px-6 md:px-8 pb-7 md:pb-9 md:pl-[7.5rem]">
                       <div className="hairline mb-5" />
                       <p className="text-grey leading-relaxed max-w-2xl text-pretty">{s.detail}</p>
-                      <a
-                        href="#contact"
-                        className="btn-pill btn-ghost mt-6 !normal-case !tracking-normal !text-sm"
-                      >
-                        {s.cta}
-                        <span aria-hidden>→</span>
-                      </a>
+                      <div className="mt-6 flex flex-wrap gap-3">
+                        <button
+                          onClick={() => setModal(s)}
+                          className="btn-pill btn-ghost !normal-case !tracking-normal !text-sm"
+                        >
+                          See the full service
+                          <span aria-hidden>→</span>
+                        </button>
+                        <a
+                          href="#contact"
+                          className="btn-pill btn-dark !normal-case !tracking-normal !text-sm"
+                        >
+                          {s.cta}
+                          <span aria-hidden>→</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -116,6 +127,8 @@ export default function Services() {
           </p>
         </Reveal>
       </div>
+
+      <ServiceModal service={modal} onClose={() => setModal(null)} />
     </section>
   );
 }

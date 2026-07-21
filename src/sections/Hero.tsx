@@ -37,11 +37,19 @@ function supportsWebGL(): boolean {
   }
 }
 
-/** Still-water stand-in: the layered SVG wave band on the horizon. */
+/** Still-water stand-in: the layered SVG wave band on the horizon,
+ *  in the sunrise palette so it bridges into the blush section below.
+ *  Gently animated so non-WebGL visitors still get a living tide. */
 function StaticOcean() {
   return (
-    <div className="absolute inset-x-0 bottom-0 h-[46%] pointer-events-none" aria-hidden="true">
-      <WaveBand className="absolute inset-0 w-full h-full" />
+    <div className="absolute inset-x-0 bottom-0 h-[52%] pointer-events-none" aria-hidden="true">
+      <WaveBand className="absolute inset-0 w-full h-full animate-[tide_9s_ease-in-out_infinite]" variant="sunrise" />
+      <style>{`
+        @keyframes tide {
+          0%, 100% { transform: translateY(0) scaleY(1); }
+          50% { transform: translateY(-2%) scaleY(1.03); }
+        }
+      `}</style>
     </div>
   );
 }
@@ -94,6 +102,17 @@ export default function Hero() {
         }}
       />
 
+      {/* palette bridge: the warm sunrise resolves into the exact blush
+          (#FFEFF0) the About section opens with, so the scroll feels like
+          a tide coming in, not a colour collision (brief · hero §2) */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-[42%] pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(255,239,240,0) 0%, rgba(255,245,230,0.55) 52%, #FFF5E6 80%, #FFEFF0 100%)',
+        }}
+      />
+
       {/* content */}
       <motion.div
         variants={container}
@@ -121,14 +140,7 @@ export default function Hero() {
 
         <motion.p
           variants={item}
-          className="mt-9 md:mt-12 text-ink/85 text-base sm:text-lg tracking-[0.02em]"
-        >
-          {hero.intro}
-        </motion.p>
-
-        <motion.p
-          variants={item}
-          className="display-italic text-navy text-xl sm:text-2xl md:text-[1.75rem] max-w-2xl mt-3 text-balance leading-snug"
+          className="display-italic text-navy text-xl sm:text-2xl md:text-[1.75rem] max-w-2xl mt-9 md:mt-12 text-balance leading-snug"
         >
           {hero.line}
         </motion.p>

@@ -75,7 +75,8 @@ export default function Heritage() {
 
                 <h3 className="display text-4xl md:text-5xl text-navy mt-auto">{place.name}</h3>
                 <p className="eyebrow text-gold-deep mt-3">{place.country}</p>
-                <p className="display-italic text-ink/80 text-lg md:text-xl leading-snug mt-4 text-pretty">
+                <p className="script script-gold text-xl mt-4 leading-none">{place.context}</p>
+                <p className="display-italic text-ink/80 text-lg md:text-xl leading-snug mt-2 text-pretty">
                   {place.line}
                 </p>
               </div>

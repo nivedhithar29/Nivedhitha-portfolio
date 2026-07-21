@@ -104,11 +104,6 @@ export default function BehindLogo() {
                   <WaveGlyph className="w-10 text-gold/80 mb-4 transition-transform duration-500 group-hover:translate-x-1 tilt-raise" />
                   <h4 className="display text-xl text-shell mb-2">{m.title}</h4>
                   <p className="text-shell/60 text-[0.85rem] leading-relaxed text-pretty">{m.body}</p>
-                  {m.episode && (
-                    <p className="script text-gold text-lg leading-snug mt-4 pt-3 border-t border-shell/10">
-                      {m.episode}
-                    </p>
-                  )}
                 </div>
               </Tilt>
             </Reveal>

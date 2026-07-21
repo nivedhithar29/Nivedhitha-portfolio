@@ -13,30 +13,22 @@ export default function About() {
         </Reveal>
 
         <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-20 items-start">
-          {/* text column */}
+          {/* text column, quiet monologue */}
           <div>
             <Reveal>
-              <p className="script text-3xl md:text-4xl mb-5">{about.kicker}</p>
+              <p className="text-grey text-sm md:text-base mb-6">{about.hi}</p>
             </Reveal>
 
             <Reveal delay={1}>
-              <h2 className="display t-h1 text-navy text-balance">
-                What I really
-                <br />
-                do is <span className="display-italic text-gold-deep">listen.</span>
-              </h2>
+              <p className="script text-3xl md:text-4xl mb-8 md:mb-10">{about.kicker}</p>
             </Reveal>
 
-            <Reveal delay={2} className="mt-9 max-w-xl">
-              <p className="text-lg md:text-xl text-ink/85 leading-relaxed text-pretty">
-                {about.lead}
-              </p>
-            </Reveal>
-
-            <div className="mt-8 space-y-5 max-w-xl">
-              {about.body.map((p, i) => (
-                <Reveal key={i} delay={(i + 2) as 2 | 3 | 4}>
-                  <p className="text-grey leading-relaxed text-pretty">{p}</p>
+            <div className="max-w-xl space-y-6 md:space-y-7">
+              {about.body.map((stanza, i) => (
+                <Reveal key={i} delay={(Math.min(i, 5)) as 0 | 1 | 2 | 3 | 4 | 5}>
+                  <p className="whitespace-pre-line text-ink/80 text-[1.02rem] md:text-lg leading-[1.85] text-pretty">
+                    {stanza}
+                  </p>
                 </Reveal>
               ))}
             </div>
@@ -47,7 +39,7 @@ export default function About() {
           </div>
 
           {/* portrait column, framed arch treatment */}
-          <Reveal delay={2} className="relative">
+          <Reveal delay={2} className="relative lg:sticky lg:top-28">
             <div className="relative px-6 sm:px-10 lg:px-6">
               {/* gold plinth behind the arch */}
               <div className="absolute inset-x-0 top-10 bottom-0 rounded-[2rem] bg-gold/25 border border-gold/40" />

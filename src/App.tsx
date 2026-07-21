@@ -8,7 +8,6 @@ import BehindLogo from './sections/BehindLogo';
 import Work from './sections/Work';
 import Heritage from './sections/Heritage';
 import Services from './sections/Services';
-import Lister from './sections/Lister';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 import { tickerLines, tickerLinesAlt } from './data/content';
@@ -28,7 +27,6 @@ export default function App() {
         <Heritage />
         <Ticker lines={tickerLinesAlt} reverse />
         <Services />
-        <Lister />
         <Contact />
       </main>
       <Footer />

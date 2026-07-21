@@ -1,5 +1,6 @@
 import Reveal from '../components/Reveal';
-import { pillars, approach } from '../data/content';
+import WaveLine from '../components/WaveLine';
+import { pillars, approach, manifesto } from '../data/content';
 
 export default function Approach() {
   return (
@@ -14,28 +15,35 @@ export default function Approach() {
           <span className="hairline flex-1" />
         </Reveal>
 
-        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-16">
-          {/* sticky heading */}
+        <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16">
+          {/* left column: the Southwave anchor + what shaped the work */}
           <div className="lg:sticky lg:top-28 self-start">
             <Reveal>
-              <h2 className="display t-h2 text-navy text-balance">
-                A way of working that{' '}
-                <span className="display-italic text-gold-deep">stays human.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={1}>
-              <p className="mt-6 text-grey max-w-sm leading-relaxed">
-                Five practices that turn a brand&apos;s noise into narrative. Each one starts
-                with a real moment, because labels are not arguments.
+              <p className="whitespace-pre-line display text-navy text-[1.35rem] sm:text-2xl md:text-[1.7rem] leading-[1.35] text-balance">
+                {approach.anchor}
               </p>
             </Reveal>
+
+            <Reveal delay={1} className="mt-8">
+              <WaveLine className="w-40 text-gold" strokeWidth={2} />
+            </Reveal>
+
+            <div className="mt-8 space-y-4 max-w-md">
+              {approach.intro.map((para, i) => (
+                <Reveal key={i} delay={(Math.min(i, 5)) as 0 | 1 | 2 | 3 | 4 | 5}>
+                  <p className="whitespace-pre-line text-grey text-[0.92rem] leading-[1.8] text-pretty">
+                    {para}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
           </div>
 
-          {/* pillars, each opens with a story fragment */}
+          {/* right column: five practices, spoken voice */}
           <ol className="space-y-2">
             {pillars.map((p, i) => (
               <Reveal as="li" key={p.no} delay={(Math.min(i, 4)) as 0 | 1 | 2 | 3 | 4}>
-                <div className="group relative grid grid-cols-[auto_1fr] gap-5 md:gap-8 py-8 border-t border-ink/10 transition-colors hover:bg-white/50 rounded-2xl px-3 md:px-5 -mx-3 md:-mx-5">
+                <div className="group relative grid grid-cols-[auto_1fr] gap-5 md:gap-8 py-8 border-t border-ink/10">
                   <div className="flex items-start gap-3 pt-1">
                     <span className="mt-2 h-2 w-2 rounded-full bg-gold" />
                     <span className="display text-2xl md:text-3xl text-navy/30 tabular-nums">
@@ -43,11 +51,8 @@ export default function Approach() {
                     </span>
                   </div>
                   <div>
-                    <h3 className="display text-2xl md:text-[1.7rem] text-navy">{p.title}</h3>
-                    <p className="display-italic mt-3 text-ink/85 text-[1.02rem] md:text-lg leading-relaxed max-w-lg text-pretty">
-                      {p.story}
-                    </p>
-                    <p className="mt-3 text-grey text-[0.92rem] leading-relaxed max-w-lg text-pretty">
+                    <h3 className="display text-xl md:text-[1.55rem] text-navy">{p.title}</h3>
+                    <p className="whitespace-pre-line mt-4 text-ink/78 text-[0.96rem] md:text-[1.02rem] leading-[1.75] max-w-xl text-pretty">
                       {p.body}
                     </p>
                   </div>
@@ -57,22 +62,27 @@ export default function Approach() {
           </ol>
         </div>
 
-        {/* My Approach manifesto, revised */}
-        <Reveal className="mt-24 md:mt-36 max-w-4xl mx-auto text-center">
-          <p className="script text-3xl md:text-4xl mb-8">{approach.kicker}</p>
-          <div className="space-y-4">
-            {approach.lines.map((line, i) => (
+        {/* My Approach manifesto */}
+        <Reveal className="mt-24 md:mt-36 max-w-3xl mx-auto">
+          <p className="script text-3xl md:text-4xl mb-10 text-center">{manifesto.kicker}</p>
+          <div className="space-y-7">
+            {manifesto.stanzas.map((stanza, i) => (
               <p
                 key={i}
-                className={`display ${
-                  i === approach.lines.length - 1
-                    ? 'display-italic text-gold-deep'
-                    : 'text-navy'
-                } text-xl sm:text-2xl md:text-[2rem] leading-tight text-balance`}
+                className="whitespace-pre-line text-navy text-lg md:text-[1.35rem] leading-[1.7] text-pretty"
               >
-                {line}
+                {stanza}
               </p>
             ))}
+
+            {/* the beat: "Actually..." gets its own breath */}
+            <p className="display-italic text-gold-deep text-2xl md:text-4xl py-4 md:py-6">
+              {manifesto.beat}
+            </p>
+
+            <p className="whitespace-pre-line text-navy text-lg md:text-[1.35rem] leading-[1.7] text-pretty">
+              {manifesto.close}
+            </p>
           </div>
         </Reveal>
       </div>

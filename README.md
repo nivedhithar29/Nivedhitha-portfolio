@@ -47,9 +47,10 @@ npm run preview  # preview the production build
 
 ```
 src/
-  components/   Nav, Mark, WaveLine, Reveal, Ticker, Tilt, SoundToggle — shared UI + brand marks
-  sections/     Hero · About · Approach · BehindLogo · Work · Heritage · Services · Lister ·
-                Contact · Footer
+  components/   Nav, Mark, WaveLine, WaveBand, Reveal, Ticker, Tilt, SoundToggle,
+                ServiceModal — shared UI + brand marks
+  sections/     Hero · About · Approach · BehindLogo · Work · Heritage · Services · Contact ·
+                Footer  (each service opens a full detail page as a ServiceModal overlay)
   three/        WaveScene — the WebGL lone-wave ocean (GLSL shaders, cursor-reactive)
   lib/          audio.ts — Web Audio ocean ambience + cinematic swell (no audio binaries)
   data/         content.ts — single source of truth for all copy
