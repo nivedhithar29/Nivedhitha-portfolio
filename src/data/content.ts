@@ -114,15 +114,12 @@ export const pillars = [
 export const manifesto = {
   kicker: 'My Approach',
   stanzas: [
-    'I don’t usually begin by asking,\n“Who’s your target audience?”\nI usually ask,\n“When did this stop feeling like you?”',
-    'Because that’s a much more interesting conversation.',
-    'Sometimes the answer is the website.\nSometimes it’s the messaging.\nSometimes it’s a founder who’s been trying to sound “professional” for so long...\nthey’ve forgotten how they naturally speak.',
-    'That’s my favourite kind of puzzle.\nNot because it’s broken.\nBecause it’s already there.\nWe just have to uncover it.',
-    'I don’t believe clarity appears because someone hands you a framework.\nI think it arrives halfway through a conversation.\nUsually the one that starts with,',
+    'I don’t open with “Who’s your target audience?”\nI ask, “When did this stop feeling like you?”',
+    'Usually it’s a founder who’s been sounding “professional” for so long,\nthey’ve forgotten how they actually talk. Nothing’s broken — it’s all still in there.',
+    'Clarity doesn’t show up because someone hands you a framework.\nIt shows up halfway through a chat, right after you say,',
   ],
   beat: 'Actually...',
-  close:
-    'That’s the moment I’m waiting for.\nBecause that’s where strategy stops sounding like strategy...\nand starts sounding like truth.',
+  close: 'That’s the moment I wait for —\nwhere strategy stops sounding like strategy, and starts sounding like you.',
 };
 
 export const logoMeanings: { title: string; body: string }[] = [
