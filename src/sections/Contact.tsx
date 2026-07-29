@@ -53,7 +53,7 @@ export default function Contact() {
     <section id="contact" className="section relative pt-24 md:pt-36 pb-0 bg-shell overflow-hidden">
       <div className="wrap relative">
         <Reveal className="text-center mb-16 md:mb-24">
-          <WaveGlyph className="w-16 mx-auto text-gold mb-7" strokeWidth={2} />
+          <WaveGlyph className="w-16 mx-auto text-gold mb-7" strokeWidth={2} alive />
           <h2 className="display t-h1 text-navy text-balance max-w-4xl mx-auto leading-[0.98]">
             {contact.headline}
           </h2>

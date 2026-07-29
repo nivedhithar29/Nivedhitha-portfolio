@@ -1,8 +1,30 @@
-import Mark from '../components/Mark';
+import { useEffect, useRef, useState } from 'react';
+import Mark, { WaveGlyph } from '../components/Mark';
 import { nav, profile } from '../data/content';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+
+  // A quiet reward for reaching the end: a line that surfaces only
+  // once the footer is truly in view — for those who stayed.
+  const endRef = useRef<HTMLDivElement>(null);
+  const [arrived, setArrived] = useState(false);
+  useEffect(() => {
+    const el = endRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          setArrived(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.6 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <footer className="section bg-navy text-shell pt-16 pb-10">
       <div className="wrap">
@@ -46,6 +68,18 @@ export default function Footer() {
               <li className="text-shell/60">{profile.location}</li>
             </ul>
           </div>
+        </div>
+
+        {/* the end-note — only for those who came all the way down */}
+        <div ref={endRef} className="mt-14 flex flex-col items-center text-center">
+          <WaveGlyph className="w-12 text-gold" strokeWidth={2} alive />
+          <p
+            className={`script text-gold text-2xl md:text-3xl mt-4 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              arrived ? 'opacity-90 translate-y-0' : 'opacity-0 translate-y-3'
+            }`}
+          >
+            You stayed till the end. Thank you for slowing down.
+          </p>
         </div>
 
         <div className="mt-14 pt-7 border-t border-shell/15 flex flex-col sm:flex-row items-center justify-between gap-4">

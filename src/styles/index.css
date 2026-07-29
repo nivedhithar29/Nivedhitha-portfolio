@@ -328,3 +328,101 @@ body {
 .reveal[data-delay='5'] {
   transition-delay: 0.4s;
 }
+
+/* ============================================================
+   Phase 2 · The Narrative House — sensory layer
+   Everything below is quiet by design. Motion communicates,
+   never performs. All of it rests under reduced-motion.
+   ============================================================ */
+
+/* ---------- The living wave: almost-breathing ---------- */
+@keyframes wave-breathe {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.045) translateY(-1.5%);
+    opacity: 1;
+  }
+}
+.wave-alive {
+  transform-origin: center;
+  animation: wave-breathe 7.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* ---------- The trailing presence (custom cursor) ---------- */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(28, 43, 94, 0.5);
+  background: rgba(200, 169, 126, 0);
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0;
+  /* transform is driven every frame in JS; never transition it */
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    opacity 0.5s ease;
+}
+.cursor-ring.is-touching {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(143, 107, 63, 0.7);
+  background: rgba(200, 169, 126, 0.1);
+}
+.cursor-ring.is-pressing {
+  width: 20px;
+  height: 20px;
+  background: rgba(28, 43, 94, 0.12);
+}
+
+/* ---------- Atmosphere: the light between rooms ---------- */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+  transition: opacity 1.2s ease;
+}
+
+/* ---------- The journey thread ---------- */
+.scroll-thread {
+  position: fixed;
+  left: clamp(1.4rem, 2.4vw, 2.4rem);
+  top: 22vh;
+  height: 56vh;
+  width: 1px;
+  background: rgba(28, 25, 23, 0.1);
+  z-index: 30;
+  pointer-events: none;
+  border-radius: 999px;
+  overflow: hidden;
+}
+.scroll-thread-fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform-origin: top center;
+  transform: scaleY(0);
+  background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+  box-shadow: 0 0 8px -1px rgba(200, 169, 126, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-alive {
+    animation: none;
+    opacity: 1;
+  }
+}

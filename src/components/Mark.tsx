@@ -5,13 +5,21 @@ export function WaveGlyph({
   className = '',
   color = 'currentColor',
   strokeWidth = 2.4,
+  alive = false,
 }: {
   className?: string;
   color?: string;
   strokeWidth?: number;
+  /** Very gentle, almost-breathing motion. The mark, alive. */
+  alive?: boolean;
 }) {
   return (
-    <svg viewBox="0 0 64 28" fill="none" className={className} aria-hidden="true">
+    <svg
+      viewBox="0 0 64 28"
+      fill="none"
+      className={`${alive ? 'wave-alive' : ''} ${className}`}
+      aria-hidden="true"
+    >
       <path
         d="M3 16 C 12 4, 19 4, 27 14 S 45 26, 53 14 S 61 9, 61 11"
         stroke={color}

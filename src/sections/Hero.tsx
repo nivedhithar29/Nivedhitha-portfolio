@@ -101,9 +101,9 @@ export default function Hero() {
         animate="show"
         className="relative z-10 min-h-[100svh] flex flex-col items-center justify-start text-center section pt-[14vh] md:pt-[13vh]"
       >
-        {/* the wave crown */}
+        {/* the wave crown — alive, breathing almost imperceptibly */}
         <motion.div variants={item}>
-          <WaveGlyph className="w-14 md:w-20 mx-auto text-navy/80" strokeWidth={2} />
+          <WaveGlyph className="w-14 md:w-20 mx-auto text-navy/80" strokeWidth={2} alive />
         </motion.div>
 
         {/* wordmark: Fraunces thin, wide letter-spacing, full contrast */}

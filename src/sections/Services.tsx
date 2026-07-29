@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Reveal from '../components/Reveal';
 import ServiceModal from '../components/ServiceModal';
+import FounderInvitation from '../components/FounderInvitation';
 import { services, type Service } from '../data/content';
 
 const numberWords = ['one', 'two', 'three', 'four', 'five'];
@@ -92,6 +93,7 @@ export default function Services() {
                   <div className="overflow-hidden">
                     <div className="px-6 md:px-8 pb-7 md:pb-9 md:pl-[7.5rem]">
                       <div className="hairline mb-5" />
+                      {s.id === 'founders-therapy' && <FounderInvitation />}
                       <p className="text-grey leading-relaxed max-w-2xl text-pretty">{s.detail}</p>
                       <div className="mt-6 flex flex-wrap gap-3">
                         <button
