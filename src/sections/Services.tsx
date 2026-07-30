@@ -16,7 +16,7 @@ export default function Services() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-12 md:mb-16">
-          <span className="eyebrow text-gold-deep">06 · Services</span>
+          <span className="eyebrow text-gold-deep">05 · Services</span>
           <span className="hairline flex-1" />
         </Reveal>
 

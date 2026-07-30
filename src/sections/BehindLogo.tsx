@@ -26,7 +26,7 @@ export default function BehindLogo() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-          <span className="eyebrow text-gold">03 · Behind the mark</span>
+          <span className="eyebrow text-gold">04 · Behind the mark</span>
           <span className="h-px flex-1 bg-shell/20" />
         </Reveal>
 
@@ -88,22 +88,22 @@ export default function BehindLogo() {
           <WaveLine className="w-56 text-gold/70" strokeWidth={1.8} />
         </Reveal>
 
-        {/* eight meanings */}
+        {/* four readings, each given room to land */}
         <Reveal>
-          <p className="text-center script text-gold text-3xl mb-3">eight quiet readings</p>
+          <p className="text-center script text-gold text-3xl mb-3">a few quiet readings</p>
           <h3 className="text-center display t-h3 text-shell mb-12 md:mb-16">
             One wave, many meanings
           </h3>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid sm:grid-cols-2 gap-5 md:gap-6 max-w-4xl mx-auto">
           {logoMeanings.map((m, i) => (
-            <Reveal key={m.title} delay={(i % 4) as 0 | 1 | 2 | 3} className="h-full">
-              <Tilt max={8} className="h-full">
-                <div className="group h-full rounded-2xl p-6 bg-white/[0.04] border border-shell/10 hover:border-gold/50 hover:bg-white/[0.07] transition-all duration-500">
-                  <WaveGlyph className="w-10 text-gold/80 mb-4 transition-transform duration-500 group-hover:translate-x-1 tilt-raise" />
-                  <h4 className="display text-xl text-shell mb-2">{m.title}</h4>
-                  <p className="text-shell/60 text-[0.85rem] leading-relaxed text-pretty">{m.body}</p>
+            <Reveal key={m.title} delay={(i % 2) as 0 | 1} className="h-full">
+              <Tilt max={6} className="h-full">
+                <div className="group h-full rounded-2xl p-8 md:p-10 bg-white/[0.04] border border-shell/10 hover:border-gold/50 hover:bg-white/[0.07] transition-all duration-500">
+                  <WaveGlyph className="w-12 text-gold/80 mb-6 transition-transform duration-500 group-hover:translate-x-1 tilt-raise" strokeWidth={2.2} />
+                  <h4 className="display text-2xl md:text-[1.7rem] text-shell mb-3">{m.title}</h4>
+                  <p className="text-shell/65 text-[0.95rem] leading-relaxed text-pretty">{m.body}</p>
                 </div>
               </Tilt>
             </Reveal>

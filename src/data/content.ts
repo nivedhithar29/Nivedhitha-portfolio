@@ -32,21 +32,14 @@ export const tickerLines = [
   'The Narrative House',
 ];
 
-export const tickerLinesAlt = [
-  'Emotional brand strategy',
-  'Founder voice + creative copy',
-  'Cultural + market understanding',
-  'Chennai · Milan · anywhere a story calls',
-  'Open to international travel',
-];
-
+/* Nav mirrors the room sequence: recognition (Heritage) before proof (Work). */
 export const nav = [
   { id: 'about', label: 'About' },
+  { id: 'heritage', label: 'Heritage' },
   { id: 'approach', label: 'Approach' },
   { id: 'logo', label: 'The Mark' },
-  { id: 'work', label: 'Work' },
-  { id: 'heritage', label: 'Heritage' },
   { id: 'services', label: 'Services' },
+  { id: 'work', label: 'Work' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -122,39 +115,25 @@ export const manifesto = {
   close: 'That’s the moment I wait for —\nwhere strategy stops sounding like strategy, and starts sounding like you.',
 };
 
+/* Four readings, not eight. Reduced to the ones that carry real weight
+   for a narrative studio (blueprint §5) so each is given room to land
+   rather than asking the visitor to hold eight abstractions at once. */
 export const logoMeanings: { title: string; body: string }[] = [
   {
-    title: 'Lone Wave',
-    body: 'A single, fluid line symbolising intuition, movement, and my "lone-wolf" creative energy.',
+    title: 'The Lone Wave',
+    body: 'A single, fluid line — intuition, movement, and a quiet "lone-wolf" creative energy that bends without breaking.',
   },
   {
-    title: 'Calm + Grounding',
-    body: 'A steady centre to return to, the feeling of a held breath finally released.',
+    title: 'A Bridge of Meaning',
+    body: 'The crossing between what is said and what is truly meant. The whole of the work, in one stroke.',
   },
   {
-    title: 'Structure + Softness',
-    body: 'Form with room to move; the discipline of a line that still knows how to bend.',
+    title: 'A Pause, a Breath',
+    body: 'Space written into the rhythm — silence held as part of the sentence, not the absence of one.',
   },
   {
-    title: 'Bridge of Meaning',
-    body: 'The crossing between what is said and what is truly meant.',
-  },
-  {
-    title: 'Pause + Breath',
-    body: 'Space written into the rhythm, silence as part of the sentence.',
-  },
-  {
-    title: 'Story Arc Unfolding',
-    body: 'The rise and fall of a narrative finding its own natural shape.',
-  },
-  {
-    title: 'Horizon Rising',
-    body: 'A line that keeps reaching forward, quiet ambition, steadily kept.',
-  },
-  {
-    // Scorpio Stillness — the story now anchors "How I Think & Work".
-    title: 'Scorpio Stillness',
-    body: 'Depth held beneath the surface; intensity that does not need to shout.',
+    title: 'A Story, Unfolding',
+    body: 'The rise and fall of a narrative finding its own natural shape, and knowing when to rest.',
   },
 ];
 
@@ -170,119 +149,93 @@ export const wordmark = {
   submark: 'A familiar place for voices, ideas, and the stories that need room to breathe.',
 };
 
-/* Impact numbers, corrected against the portfolio PDF */
+/* Impact numbers, chosen for outcome rather than platform vanity
+   (blueprint §5 · "not louder, but truer"). The view/impression counts
+   live inside the case narratives as colour, never as headline proof. */
 export const impactStats = [
-  { no: 'one', value: '314K+', label: 'views on a Stray Kids insight graphic on X' },
-  { no: 'two', value: '#1', label: 'most-read piece on Fashionbi (Index 100)' },
-  { no: 'three', value: '3', label: 'markets mapped for compliance · EU · US · Canada' },
-  { no: 'four', value: '8+', label: 'brands across India and Italy' },
+  { no: 'one', value: '#1', label: 'most-read piece on Fashionbi · Index 100' },
+  { no: 'two', value: '3', label: 'markets mapped for compliance · EU · US · Canada' },
+  { no: 'three', value: '8+', label: 'brands guided across India & Italy' },
+  { no: 'four', value: '1-tap', label: 'first one-tap Instagram orders, live' },
 ];
 
-export const projects = [
+/* A few cases told with real narrative shape — a room, a way of
+   thinking, and what it made — rather than eight identical stat cards
+   (blueprint §5). Platform numbers appear as colour inside the story,
+   never as the headline. */
+export interface CaseStudy {
+  id: string;
+  name: string;
+  location: string;
+  roles: string;
+  accent: 'navy' | 'gold';
+  room: string; // the situation / what was needed
+  thinking: string; // how she approached it
+  made: string; // what it produced (outcome-specific)
+  quote?: { line: string; who: string };
+  pulled?: { value: string; label: string };
+}
+
+export const caseStudies: CaseStudy[] = [
   {
     id: 'fashionbi',
     name: 'Fashionbi',
     location: 'Milan, Italy · Remote',
     roles: 'Trend Researcher · Insights Writer · Content Strategist',
     accent: 'navy',
-    summary:
-      'Led annual trend and social performance analysis for Giorgio Armani / Emporio Armani Ristorante, writing SEO/AEO-friendly weekly insights and flash news across Fashionbi media.',
-    impact: [
-      'A Stray Kids insight graphic went viral on X, 314K+ views, 1.7K likes, 900+ reposts.',
-      'The report "The Luxury × Sportswear Fashion Ludo" became the #1 most-read piece (Index 100), shared by Andrea Cappi, then Chief eBusiness Officer of Valentino.',
-      'Insights cited in Google Snippets, ChatGPT inline references and trend round-ups.',
-    ],
-    metric: { value: '314K+', label: 'views on a single insight' },
+    room: 'Fashionbi needed annual trend and social-performance analysis for Giorgio Armani and Emporio Armani Ristorante — insight that would actually be read and cited, not just filed away.',
+    thinking:
+      'I wrote weekly insights and flash news built for how people (and now AI) really search — SEO- and AEO-sound, but written to be felt rather than skimmed.',
+    made: 'The report “The Luxury × Sportswear Fashion Ludo” became the #1 most-read piece on the platform (Index 100), shared by Valentino’s then-Chief eBusiness Officer, and surfaced in Google Snippets and ChatGPT references. One insight graphic quietly crossed 314K views along the way.',
+    pulled: { value: '#1', label: 'most-read · Index 100' },
   },
   {
     id: 'dyou',
     name: 'd’you',
     location: 'Chennai, India',
-    roles: 'Indie Brand Series · LinkedIn Collaboration',
+    roles: 'Founder Narrative · Brand Series',
     accent: 'gold',
-    summary:
-      'Wrote the emotional narrative for the launch of d’you’s five-year unscripted reality series, "in d’you time" — a story that made people feel the brand became a person, not a product.',
-    impact: [
-      'Brand team: "So thoughtfully written — a delightful way to describe d’you."',
-      'Drew international interest — MinMaxDeals LLC (California) approached via the comments.',
-      'Performance: 3,328+ impressions · 42 reactions · 31 comments.',
-    ],
-    metric: { value: '3.3K+', label: 'impressions on the launch story' },
-  },
-  {
-    id: 'southwave',
-    name: 'Southwave',
-    location: 'Cochin, India',
-    roles: 'Indie Brand Series · LinkedIn Feature',
-    accent: 'navy',
-    summary:
-      'Captured Southwave’s beach-born identity — rust, waves, wind, craft and memory — telling their story exactly as they had been building it.',
-    impact: [
-      'Founder: "You told our story exactly as we’ve been building it — real and rooted."',
-      'A quiet, rooted feature that resonated with their community.',
-      'Performance: 1,530+ impressions · 48 likes · 22 comments · 3 shares.',
-    ],
-    metric: { value: '1.5K+', label: 'impressions, real and rooted' },
+    room: 'd’you was opening a five-year unscripted brand series and needed a story that made people feel the brand had become a person, not a product.',
+    thinking:
+      'I wrote the emotional narrative for “in d’you time” the way you’d introduce someone you love — starting from feeling, not features.',
+    made: 'It drew international interest, with MinMaxDeals LLC (California) reaching out through the comments — a founder story that travelled on its own warmth.',
+    quote: { line: 'So thoughtfully written — a delightful way to describe d’you.', who: 'the d’you brand team' },
   },
   {
     id: 'dhpl',
     name: 'DHPL Group',
     location: 'Chennai, India',
     roles: 'Research Strategist · AI Ops · Compliance Writer',
-    accent: 'gold',
-    summary:
-      'Strategic research and market-regulation support across i+Yashae (US), Hair & Compounds (US) and DHPL Group, building workflows for research, SEO, documentation and operations.',
-    impact: [
-      'Compliance mapping across EU, US and Canada with audit-ready content systems.',
-      'SEO / AEO / GEO keyword audits, metadata and internal linking architecture.',
-      'Authored a company-wide "How to Prompt" guide adopted across teams.',
-    ],
-    metric: { value: '3', label: 'markets mapped for compliance' },
+    accent: 'navy',
+    room: 'Across i+Yashae, Hair & Compounds and DHPL, the group needed market-regulation support and research workflows that could stand up to an audit.',
+    thinking:
+      'I built the systems, not just the pages — compliance mapping, SEO/AEO/GEO audits, documentation — and a company-wide “How to Prompt” guide so the whole team could think the same way.',
+    made: 'Compliance mapped across three markets (EU, US and Canada) with audit-ready content systems adopted across teams.',
+    pulled: { value: '3', label: 'markets · audit-ready' },
+  },
+];
+
+/* The rest of the house — briefer rooms, one honest line each. */
+export const moreWork: { name: string; location: string; line: string }[] = [
+  {
+    name: 'Southwave',
+    location: 'Cochin, India',
+    line: 'Told a beach-born brand’s story exactly as they’d been building it — rust, waves, wind, craft. “Real and rooted,” said the founder.',
   },
   {
-    id: 'salt',
     name: 'Salt Studio',
     location: 'Cochin, India',
-    roles: 'Branding · Marketing · Social Strategy',
-    accent: 'navy',
-    summary:
-      'Built brand partnerships and collaborations with celebrities and influencers, elevating social engagement through aligned, emotionally legible content.',
-    impact: [
-      'Introduced Linktree optimisation — the first one-tap online orders via Instagram.',
-      'Supported email-marketing-led PR and e-commerce product alignment.',
-      'Introduced a "Shop the Look" category on the website.',
-    ],
-    metric: { value: '1-tap', label: 'orders, first time live' },
+    line: 'Brand partnerships and social strategy — plus the first one-tap Instagram orders via Linktree, and a “Shop the Look” category.',
   },
   {
-    id: 'studiouno',
     name: 'Studio Uno Records',
     location: 'Chennai, India',
-    roles: 'Social Media · Web Optimisation · SEO',
-    accent: 'gold',
-    summary:
-      'Crafted the content strategy for a music studio, scheduling and optimising posts, sharpening the brand’s social presence and SEO foundations.',
-    impact: [
-      'Improved visibility and a clearer content structure.',
-      'Stronger, warmer community interaction.',
-      'SEO-optimised website content end to end.',
-    ],
-    metric: { value: '↑', label: 'visibility & community' },
+    line: 'Content strategy and SEO for a music studio — clearer structure, warmer community, a sharper presence.',
   },
   {
-    id: '247',
     name: '247 Group',
     location: 'Milan, Italy · Remote',
-    roles: 'SEO Writer · Catalog Specialist',
-    accent: 'navy',
-    summary:
-      'Optimised the Macondo online store, handling product-sheet writing and ensuring an SEO-sound catalog structure with real on-page clarity.',
-    impact: [
-      'Higher on-page clarity across the catalog.',
-      'Improved organic performance.',
-      'Enhanced content accuracy and SEO foundations.',
-    ],
-    metric: { value: 'SEO', label: 'catalog rebuilt for search' },
+    line: 'Rebuilt the Macondo store’s product sheets and catalog for real on-page clarity and stronger organic reach.',
   },
 ];
 

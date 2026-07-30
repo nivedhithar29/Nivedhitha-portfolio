@@ -12,7 +12,7 @@ import Heritage from './sections/Heritage';
 import Services from './sections/Services';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
-import { tickerLines, tickerLinesAlt } from './data/content';
+import { tickerLines } from './data/content';
 
 export default function App() {
   return (
@@ -21,16 +21,22 @@ export default function App() {
       <div className="grain" aria-hidden="true" />
       <Overture />
       <Nav />
+      {/*
+        Room sequence follows the emotional arc, not portfolio categories
+        (blueprint §5): recognition before proof.
+        Hero → About → Heritage → Approach → The Mark → Services → Work → Contact.
+        A single, confident identity marquee sits between the threshold and
+        About as ambient texture — the other two were retired.
+      */}
       <main>
         <Hero />
         <Ticker lines={tickerLines} dark />
         <About />
+        <Heritage />
         <Approach />
         <BehindLogo />
-        <Work />
-        <Heritage />
-        <Ticker lines={tickerLinesAlt} reverse />
         <Services />
+        <Work />
         <Contact />
       </main>
       <Footer />

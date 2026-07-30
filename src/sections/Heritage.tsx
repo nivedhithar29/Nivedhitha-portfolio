@@ -1,39 +1,21 @@
-import { useRef } from 'react';
 import Reveal from '../components/Reveal';
 import WaveLine from '../components/WaveLine';
 import { WaveGlyph } from '../components/Mark';
 import { heritage } from '../data/content';
 
-/* Collage tilts, alternating so the strip feels pinned by hand */
-const tiltClass = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2'];
+/* ============================================================
+   Heritage — The Origin.
+
+   The single most important beat on the site (blueprint §5):
+   recognition, before any proof is asked for. Rebuilt from a
+   fragile horizontal carousel into a vertical timeline so each
+   city is given real room — Trichy, Salem, Milano, Chennai — and
+   the reader simply walks down it. Scroll is the only mechanism;
+   it is keyboard- and screen-reader-accessible by nature, needs
+   no arrows, and lets the room be as long and slow as it deserves.
+   ============================================================ */
 
 export default function Heritage() {
-  const stripRef = useRef<HTMLDivElement>(null);
-
-  // Advance by exactly one card so a single press produces one whole,
-  // satisfying unit of movement — measured from the real gap between cards.
-  const nudge = (dir: 1 | -1) => {
-    const el = stripRef.current;
-    if (!el) return;
-    const cards = el.querySelectorAll<HTMLElement>(':scope > *');
-    const step =
-      cards.length > 1
-        ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left
-        : Math.min(el.clientWidth * 0.8, 480);
-    el.scrollBy({ left: dir * step, behavior: 'smooth' });
-  };
-
-  // Keyboard access: the strip is focusable and the arrow keys walk it.
-  const onKeyNav = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      nudge(1);
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      nudge(-1);
-    }
-  };
-
   return (
     <section id="heritage" className="relative py-24 md:py-36 bg-paper overflow-hidden">
       <div className="absolute top-0 -right-24 h-[24rem] w-[24rem] rounded-full bg-gold/15 blur-3xl pointer-events-none" />
@@ -41,83 +23,80 @@ export default function Heritage() {
       <div className="section">
         <div className="wrap">
           <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-            <span className="eyebrow text-gold-deep">05 · Heritage</span>
+            <span className="eyebrow text-gold-deep">02 · Heritage</span>
             <span className="hairline flex-1" />
           </Reveal>
 
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 items-end mb-12 md:mb-16">
+          <div className="max-w-2xl mb-16 md:mb-24">
             <Reveal>
               <p className="script text-3xl md:text-4xl mb-4">{heritage.kicker}</p>
               <h2 className="display t-h1 text-navy text-balance">{heritage.title}</h2>
             </Reveal>
-            <Reveal delay={1} className="flex lg:justify-end gap-3 pb-2">
-              <button
-                onClick={() => nudge(-1)}
-                aria-label="Scroll heritage back"
-                className="grid place-items-center h-11 w-11 rounded-full border border-ink/20 text-navy hover:bg-navy hover:text-shell hover:border-navy transition-colors"
-              >
-                ←
-              </button>
-              <button
-                onClick={() => nudge(1)}
-                aria-label="Scroll heritage forward"
-                className="grid place-items-center h-11 w-11 rounded-full border border-ink/20 text-navy hover:bg-navy hover:text-shell hover:border-navy transition-colors"
-              >
-                →
-              </button>
-            </Reveal>
           </div>
+
+          {/* the timeline — a single wave-line spine, one city per stop */}
+          <ol className="relative max-w-3xl mx-auto lg:mx-0 lg:ml-[6vw]">
+            {/* the spine */}
+            <span
+              aria-hidden="true"
+              className="absolute left-[11px] md:left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-gold/70 via-gold/40 to-transparent"
+            />
+
+            {heritage.places.map((place, i) => (
+              <Reveal
+                as="li"
+                key={place.name}
+                delay={(Math.min(i, 3)) as 0 | 1 | 2 | 3}
+                className="relative grid grid-cols-[auto_1fr] gap-6 md:gap-10 pb-16 md:pb-24 last:pb-0"
+              >
+                {/* node on the spine */}
+                <span className="relative z-10 flex flex-col items-center pt-1.5">
+                  <span className="grid place-items-center h-6 w-6 md:h-8 md:w-8 rounded-full bg-paper border border-gold/60 shadow-[0_0_0_5px_rgba(255,247,244,1)]">
+                    <span className="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-gold" />
+                  </span>
+                </span>
+
+                {/* the city, given room */}
+                <div className="pt-0.5">
+                  <div className="flex items-baseline gap-4">
+                    <span className="display text-navy/25 text-2xl md:text-3xl tabular-nums leading-none">
+                      {place.no}
+                    </span>
+                    <h3 className="display text-4xl md:text-6xl text-navy leading-none">
+                      {place.name}
+                    </h3>
+                    <WaveGlyph
+                      className="w-9 md:w-11 text-gold ml-1 hidden sm:block"
+                      strokeWidth={2.2}
+                    />
+                  </div>
+
+                  <p className="eyebrow text-gold-deep mt-4">{place.country}</p>
+
+                  {/* the genuinely personal note — script earns its place here */}
+                  <p className="script script-gold text-2xl md:text-3xl mt-5 leading-none">
+                    {place.context}
+                  </p>
+
+                  <p className="display-italic text-ink/80 text-lg md:text-xl leading-snug mt-3 max-w-xl text-pretty">
+                    {place.line}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
+
+          {/* closing beat — the homecoming line, then out */}
+          <Reveal className="max-w-3xl mx-auto lg:mx-0 lg:ml-[6vw] mt-4 md:mt-8 pl-[calc(1.5rem+24px)] md:pl-[calc(2.5rem+32px)]">
+            <p className="script text-gold-deep text-3xl md:text-4xl leading-tight max-w-lg">
+              {heritage.note}
+            </p>
+            <p className="eyebrow text-grey mt-5">Open to international travel</p>
+          </Reveal>
         </div>
       </div>
 
-      {/* horizontal collage strip, full-bleed */}
-      <Reveal>
-        <div
-          ref={stripRef}
-          className="h-scroll px-[clamp(1.25rem,5vw,5.5rem)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 rounded-xl"
-          role="group"
-          tabIndex={0}
-          onKeyDown={onKeyNav}
-          aria-label="The places that shaped the story — use the arrow keys, or the buttons above, to move between them"
-        >
-          {heritage.places.map((place, i) => (
-            <article
-              key={place.name}
-              className={`group relative w-[78vw] sm:w-[24rem] md:w-[26rem] ${tiltClass[i % 4]} hover:rotate-0 transition-transform duration-700`}
-            >
-              <div className="h-full rounded-[1.6rem] bg-white/75 border border-gold/40 shadow-[0_30px_70px_-45px_rgba(28,25,23,0.5)] p-7 md:p-9 flex flex-col min-h-[19rem] md:min-h-[21rem]">
-                {/* postmark corner */}
-                <div className="flex items-start justify-between">
-                  <span className="display text-navy/25 text-5xl md:text-6xl">{place.no}</span>
-                  <WaveGlyph className="w-10 text-gold group-hover:translate-x-1 transition-transform duration-500" strokeWidth={2.2} />
-                </div>
-
-                <h3 className="display text-4xl md:text-5xl text-navy mt-auto">{place.name}</h3>
-                <p className="eyebrow text-gold-deep mt-3">{place.country}</p>
-                <p className="script script-gold text-xl mt-4 leading-none">{place.context}</p>
-                <p className="display-italic text-ink/80 text-lg md:text-xl leading-snug mt-2 text-pretty">
-                  {place.line}
-                </p>
-              </div>
-            </article>
-          ))}
-
-          {/* closing note card */}
-          <article className="relative w-[78vw] sm:w-[24rem] md:w-[26rem] rotate-1 hover:rotate-0 transition-transform duration-700">
-            <div className="h-full rounded-[1.6rem] bg-navy text-shell p-7 md:p-9 flex flex-col justify-between min-h-[19rem] md:min-h-[21rem]">
-              <WaveGlyph className="w-12 text-gold" strokeWidth={2.2} />
-              <div>
-                <p className="script text-gold text-3xl md:text-4xl leading-tight">
-                  {heritage.note}
-                </p>
-                <p className="eyebrow text-shell/60 mt-6">Open to international travel</p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </Reveal>
-
-      <Reveal className="mt-12 flex justify-center">
+      <Reveal className="mt-20 md:mt-28 flex justify-center">
         <WaveLine className="w-48 text-gold" strokeWidth={2} />
       </Reveal>
     </section>

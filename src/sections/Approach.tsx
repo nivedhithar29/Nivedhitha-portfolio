@@ -15,7 +15,7 @@ export default function Approach() {
 
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
-          <span className="eyebrow text-gold-deep">02 · How I think &amp; work</span>
+          <span className="eyebrow text-gold-deep">03 · How I think &amp; work</span>
           <span className="hairline flex-1" />
         </Reveal>
 
