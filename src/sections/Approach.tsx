@@ -1,5 +1,9 @@
+import { useEffect, useRef } from 'react';
 import Reveal from '../components/Reveal';
 import { pillars, approach, manifesto } from '../data/content';
+import { isOceanOn, playSwell } from '../lib/audio';
+
+const PEAK_KEY = 'niranula-peak-swell';
 
 const toneMap: Record<string, { dot: string; text: string }> = {
   navy: { dot: 'bg-navy', text: 'text-navy' },
@@ -7,8 +11,41 @@ const toneMap: Record<string, { dot: string; text: string }> = {
 };
 
 export default function Approach() {
+  // The one reserved swell of the whole page (blueprint §6): as the reader
+  // crosses the Heritage → Approach hinge — the emotional peak — the score
+  // lifts once, but ONLY if they've opened the ocean. Silence is honoured
+  // absolutely; a muted visitor hears nothing. Plays a single time.
+  const peakRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = peakRef.current;
+    if (!el) return;
+    try {
+      if (sessionStorage.getItem(PEAK_KEY) === '1') return;
+    } catch {
+      /* ignore storage failures */
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        if (!isOceanOn()) return; // muted → no swell, ever
+        playSwell();
+        try {
+          sessionStorage.setItem(PEAK_KEY, '1');
+        } catch {
+          /* ignore */
+        }
+        io.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section id="approach" className="section relative py-24 md:py-36 bg-paper overflow-hidden">
+      {/* the peak marker — where the score is allowed to lift, once */}
+      <div ref={peakRef} aria-hidden="true" className="absolute top-1/4 left-0 h-px w-px" />
       {/* soft background blooms */}
       <div className="absolute -top-20 right-0 h-[26rem] w-[26rem] rounded-full bg-gold/20 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 -left-24 h-[22rem] w-[22rem] rounded-full bg-blush-deep/70 blur-3xl pointer-events-none" />

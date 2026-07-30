@@ -24,6 +24,17 @@ export default function BehindLogo() {
       <div className="absolute -left-20 bottom-10 h-72 w-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
       <div className="absolute right-0 top-0 h-80 w-80 rounded-full bg-[#2A3D7A]/40 blur-3xl pointer-events-none" />
 
+      {/* color-field seams: the paper rooms on either side linger a moment
+          beneath the navy, so the boundary dissolves instead of cutting */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-20 md:h-24 bg-gradient-to-b from-paper to-transparent pointer-events-none"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-20 md:h-24 bg-gradient-to-t from-paper to-transparent pointer-events-none"
+      />
+
       <div className="wrap relative">
         <Reveal className="flex items-center gap-4 mb-14 md:mb-20">
           <span className="eyebrow text-gold">04 · Behind the mark</span>

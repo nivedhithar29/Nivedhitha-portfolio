@@ -95,7 +95,11 @@ export default function Services() {
                   style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 md:px-8 pb-7 md:pb-9 md:pl-[7.5rem]">
+                    <div
+                      className={`px-6 md:px-8 pb-7 md:pb-9 md:pl-[7.5rem] transition-opacity duration-500 ${
+                        open ? 'opacity-100 delay-100' : 'opacity-0'
+                      }`}
+                    >
                       <div className="hairline mb-5" />
                       {s.id === 'founders-therapy' && <FounderInvitation />}
                       <p className="text-grey leading-relaxed max-w-2xl text-pretty">{s.detail}</p>

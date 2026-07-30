@@ -314,7 +314,7 @@ export const services: Service[] = [
       'You know your brand better than anyone. And somehow, when you sit down to explain it, nothing comes out right. This session is for that gap.',
     detail:
       'A 90–120 minute emotional strategy deep-dive where we untangle your story, name what you actually do, and find the words that finally feel like you.',
-    cta: "Let's talk about this",
+    cta: 'Tell me where to start',
     full: {
       whatItIs:
         'A 90–120 minute emotional strategy deep-dive where we untangle your story, name what you actually do, and find the words that finally feel like you.',
@@ -338,7 +338,7 @@ export const services: Service[] = [
     entry: "You have an idea. It's good. You just can't quite shape it into something you'd show the world. Yet.",
     detail:
       'Strategic and creative concept development for brand positioning, campaign directions, and launch narratives.',
-    cta: "Let's talk about this",
+    cta: 'Shape the concept with me',
     full: {
       whatItIs:
         'Strategic and creative concept development for brand positioning, campaign directions, and launch narratives.',
@@ -360,7 +360,7 @@ export const services: Service[] = [
     entry:
       'Every time you read your own website, something feels slightly off. Not wrong. Just... not quite you.',
     detail: 'Building or refining your brand voice — then writing with it.',
-    cta: "Let's talk about this",
+    cta: 'Find the voice with me',
     full: {
       whatItIs: 'Building or refining your brand voice — then writing with it.',
       doLabel: 'What we do',
@@ -381,7 +381,7 @@ export const services: Service[] = [
     entry:
       "You want to be found. But you don't want to sound like you were written by someone who's never met you.",
     detail: 'SEO content that reads like a human wrote it — because one did.',
-    cta: "Let's talk about this",
+    cta: 'Talk through your content',
     full: {
       whatItIs: 'SEO content that reads like a human wrote it — because one did.',
       doLabel: 'What we do',
@@ -400,7 +400,7 @@ export const services: Service[] = [
     tag: 'Add-on',
     entry: 'Your subscribers opened your email. Now what? This is the work of making that moment matter.',
     detail: 'Email sequences, newsletters, and campaigns that feel personal at scale.',
-    cta: "Let's talk about this",
+    cta: 'Warm up your list',
     full: {
       whatItIs: 'Email sequences, newsletters, and campaigns that feel personal at scale.',
       doLabel: 'What we do',
