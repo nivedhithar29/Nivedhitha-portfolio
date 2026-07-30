@@ -48,41 +48,45 @@ export default function Services() {
                     : 'border-ink/10 hover:border-gold/50 hover:bg-white/75'
                 }`}
               >
-                <button
-                  onClick={() => setOpenIdx(open ? null : i)}
-                  aria-expanded={open}
-                  aria-controls={`service-panel-${i}`}
-                  className="w-full text-left p-6 md:p-8 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start md:items-center"
-                >
-                  <span className="flex flex-col items-center gap-1 pt-1 md:pt-0">
-                    <span className="eyebrow text-gold-deep">{numberWords[i]}</span>
-                    <span className="display text-3xl md:text-4xl text-navy/25 tabular-nums">
-                      0{i + 1}
-                    </span>
-                  </span>
-
-                  <span className="block">
-                    <span className="flex flex-wrap items-center gap-3">
-                      <span className="display text-2xl md:text-[1.9rem] text-navy">{s.name}</span>
-                      <span className="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-gold/25 text-gold-deep">
-                        {s.tag}
+                {/* WAI-ARIA disclosure: a real heading wraps each trigger so a
+                    screen-reader visitor can move service to service by heading */}
+                <h3 className="contents">
+                  <button
+                    onClick={() => setOpenIdx(open ? null : i)}
+                    aria-expanded={open}
+                    aria-controls={`service-panel-${i}`}
+                    className="w-full text-left p-6 md:p-8 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start md:items-center"
+                  >
+                    <span className="flex flex-col items-center gap-1 pt-1 md:pt-0">
+                      <span className="eyebrow text-gold-deep">{numberWords[i]}</span>
+                      <span className="display text-3xl md:text-4xl text-navy/25 tabular-nums">
+                        0{i + 1}
                       </span>
                     </span>
-                    {/* the emotional entry point leads */}
-                    <span className="display-italic block mt-2.5 text-ink/85 text-[1.02rem] md:text-lg leading-relaxed max-w-2xl text-pretty">
-                      {s.entry}
-                    </span>
-                  </span>
 
-                  <span
-                    aria-hidden="true"
-                    className={`grid place-items-center h-10 w-10 rounded-full border transition-all duration-500 shrink-0 ${
-                      open ? 'rotate-45 border-navy bg-navy text-shell' : 'border-ink/20 text-navy'
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
+                    <span className="block">
+                      <span className="flex flex-wrap items-center gap-3">
+                        <span className="display text-2xl md:text-[1.9rem] text-navy">{s.name}</span>
+                        <span className="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-gold/25 text-gold-deep">
+                          {s.tag}
+                        </span>
+                      </span>
+                      {/* the emotional entry point leads */}
+                      <span className="display-italic block mt-2.5 text-ink/85 text-[1.02rem] md:text-lg leading-relaxed max-w-2xl text-pretty">
+                        {s.entry}
+                      </span>
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className={`grid place-items-center h-10 w-10 rounded-full border transition-all duration-500 shrink-0 ${
+                        open ? 'rotate-45 border-navy bg-navy text-shell' : 'border-ink/20 text-navy'
+                      }`}
+                    >
+                      +
+                    </span>
+                  </button>
+                </h3>
 
                 {/* expandable detail */}
                 <div

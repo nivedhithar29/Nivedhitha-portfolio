@@ -110,11 +110,6 @@ export default function BehindLogo() {
           ))}
         </div>
 
-        <Reveal className="mt-10 text-center">
-          <p className="text-shell/45 text-sm">
-            Each reading is collecting its own true story. The rest are on their way.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

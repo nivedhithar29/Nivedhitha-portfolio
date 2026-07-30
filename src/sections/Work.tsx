@@ -14,7 +14,10 @@ const barMap: Record<string, string> = {
 function Marquee() {
   const row = [...experiences, ...experiences];
   return (
-    <div className="relative overflow-hidden py-8 border-y border-ink/12 bg-shell">
+    <div
+      className="relative overflow-hidden py-8 border-y border-ink/12 bg-shell"
+      aria-hidden="true"
+    >
       <div className="flex w-max animate-marquee gap-12 md:gap-16 hover:[animation-play-state:paused]">
         {row.map((e, i) => (
           <div key={i} className="flex items-center gap-4 shrink-0">

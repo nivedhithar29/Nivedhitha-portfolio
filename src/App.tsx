@@ -2,9 +2,7 @@ import Nav from './components/Nav';
 import Ticker from './components/Ticker';
 import SoundToggle from './components/SoundToggle';
 import Overture from './components/Overture';
-import Cursor from './components/Cursor';
 import Atmosphere from './components/Atmosphere';
-import ScrollThread from './components/ScrollThread';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Approach from './sections/Approach';
@@ -21,8 +19,6 @@ export default function App() {
     <>
       <Atmosphere />
       <div className="grain" aria-hidden="true" />
-      <ScrollThread />
-      <Cursor />
       <Overture />
       <Nav />
       <main>

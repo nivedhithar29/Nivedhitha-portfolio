@@ -10,10 +10,28 @@ const tiltClass = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2'];
 export default function Heritage() {
   const stripRef = useRef<HTMLDivElement>(null);
 
+  // Advance by exactly one card so a single press produces one whole,
+  // satisfying unit of movement — measured from the real gap between cards.
   const nudge = (dir: 1 | -1) => {
     const el = stripRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 480), behavior: 'smooth' });
+    const cards = el.querySelectorAll<HTMLElement>(':scope > *');
+    const step =
+      cards.length > 1
+        ? cards[1].getBoundingClientRect().left - cards[0].getBoundingClientRect().left
+        : Math.min(el.clientWidth * 0.8, 480);
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+
+  // Keyboard access: the strip is focusable and the arrow keys walk it.
+  const onKeyNav = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      nudge(1);
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      nudge(-1);
+    }
   };
 
   return (
@@ -56,14 +74,15 @@ export default function Heritage() {
       <Reveal>
         <div
           ref={stripRef}
-          className="h-scroll px-[clamp(1.25rem,5vw,5.5rem)]"
-          role="list"
-          aria-label="The places that shaped the story"
+          className="h-scroll px-[clamp(1.25rem,5vw,5.5rem)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/60 rounded-xl"
+          role="group"
+          tabIndex={0}
+          onKeyDown={onKeyNav}
+          aria-label="The places that shaped the story — use the arrow keys, or the buttons above, to move between them"
         >
           {heritage.places.map((place, i) => (
             <article
               key={place.name}
-              role="listitem"
               className={`group relative w-[78vw] sm:w-[24rem] md:w-[26rem] ${tiltClass[i % 4]} hover:rotate-0 transition-transform duration-700`}
             >
               <div className="h-full rounded-[1.6rem] bg-white/75 border border-gold/40 shadow-[0_30px_70px_-45px_rgba(28,25,23,0.5)] p-7 md:p-9 flex flex-col min-h-[19rem] md:min-h-[21rem]">
