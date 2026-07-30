@@ -55,6 +55,7 @@ export default function Services() {
                     onClick={() => setOpenIdx(open ? null : i)}
                     aria-expanded={open}
                     aria-controls={`service-panel-${i}`}
+                    aria-label={`${s.name} — ${s.tag}`}
                     className="w-full text-left p-6 md:p-8 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start md:items-center"
                   >
                     <span className="flex flex-col items-center gap-1 pt-1 md:pt-0">

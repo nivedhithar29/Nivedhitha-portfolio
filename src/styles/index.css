@@ -255,31 +255,6 @@ body {
     transform: translateZ(34px);
   }
 
-  /* Horizontal scroll strip (heritage) */
-  .h-scroll {
-    display: flex;
-    gap: clamp(1rem, 2.5vw, 1.75rem);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1.25rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold) transparent;
-  }
-  .h-scroll > * {
-    scroll-snap-align: center;
-    flex-shrink: 0;
-  }
-  .h-scroll::-webkit-scrollbar {
-    height: 6px;
-  }
-  .h-scroll::-webkit-scrollbar-thumb {
-    background: var(--gold);
-    border: none;
-  }
-  .h-scroll::-webkit-scrollbar-track {
-    background: transparent;
-  }
 }
 
 @layer utilities {
@@ -340,16 +315,18 @@ body {
   0%,
   100% {
     transform: scale(1) translateY(0);
-    opacity: 0.82;
+    opacity: 0.88;
   }
   50% {
-    transform: scale(1.045) translateY(-1.5%);
+    transform: scale(1.028) translateY(-1%);
     opacity: 1;
   }
 }
 .wave-alive {
   transform-origin: center;
-  animation: wave-breathe 7.5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  /* almost imperceptible — the mark's continuous room-tone, like the
+     ocean for the eye; never a pulse. Held still under reduced motion. */
+  animation: wave-breathe 9s cubic-bezier(0.37, 0, 0.63, 1) infinite;
   will-change: transform, opacity;
 }
 

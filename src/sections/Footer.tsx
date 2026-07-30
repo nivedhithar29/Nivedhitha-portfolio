@@ -70,15 +70,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* the end-note — only for those who came all the way down */}
-        <div ref={endRef} className="mt-14 flex flex-col items-center text-center">
-          <WaveGlyph className="w-12 text-gold" strokeWidth={2} alive />
+        {/* The reflection — the last beat, given the care of the opening
+            (peak-end rule). Surfaces only for those who came all the way
+            down, and settles slowly, like the wave coming to rest. */}
+        <div
+          ref={endRef}
+          className="mt-20 md:mt-28 mb-6 flex flex-col items-center text-center"
+        >
+          <WaveGlyph className="w-14 text-gold" strokeWidth={2} alive />
           <p
-            className={`script text-gold text-2xl md:text-3xl mt-4 transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-              arrived ? 'opacity-90 translate-y-0' : 'opacity-0 translate-y-3'
+            className={`script text-gold text-3xl md:text-4xl mt-6 transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              arrived ? 'opacity-95 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
           >
-            You stayed till the end. Thank you for slowing down.
+            You stayed till the very end.
+          </p>
+          <p
+            className={`display-italic text-shell/75 text-lg md:text-xl mt-4 max-w-md transition-all duration-[1400ms] delay-200 ease-[cubic-bezier(0.22,1,0.36,1)] text-pretty ${
+              arrived ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            Thank you for the time. Wherever your story goes next, I hope it goes
+            gently.
           </p>
         </div>
 
