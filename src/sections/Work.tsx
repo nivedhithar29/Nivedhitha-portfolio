@@ -11,22 +11,33 @@ const barMap: Record<string, string> = {
   gold: 'bg-gold',
 };
 
-function Marquee() {
-  const row = [...experiences, ...experiences];
+function MarqueeItem({ e }: { e: (typeof experiences)[number] }) {
   return (
-    <div className="relative overflow-hidden py-8 border-y border-ink/12 bg-shell" aria-hidden="true">
+    <div className="flex items-center gap-4 shrink-0">
+      <span className="display text-2xl md:text-3xl text-navy/85 whitespace-nowrap">
+        {e.name}
+      </span>
+      <span className="text-[0.62rem] uppercase tracking-[0.2em] text-grey whitespace-nowrap">
+        {e.place}
+      </span>
+      <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+    </div>
+  );
+}
+
+function Marquee() {
+  return (
+    <div className="relative overflow-hidden py-8 border-y border-ink/12 bg-shell">
       <div className="flex w-max animate-marquee gap-12 md:gap-16 hover:[animation-play-state:paused]">
-        {row.map((e, i) => (
-          <div key={i} className="flex items-center gap-4 shrink-0">
-            <span className="display text-2xl md:text-3xl text-navy/85 whitespace-nowrap">
-              {e.name}
-            </span>
-            <span className="text-[0.62rem] uppercase tracking-[0.2em] text-grey whitespace-nowrap">
-              {e.place}
-            </span>
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-          </div>
+        {experiences.map((e, i) => (
+          <MarqueeItem key={i} e={e} />
         ))}
+        {/* duplicate for seamless loop — hidden from assistive tech */}
+        <div aria-hidden="true" className="contents">
+          {experiences.map((e, i) => (
+            <MarqueeItem key={`dup-${i}`} e={e} />
+          ))}
+        </div>
       </div>
       {/* edge fades */}
       <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-shell to-transparent pointer-events-none" />

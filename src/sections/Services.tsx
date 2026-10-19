@@ -48,11 +48,11 @@ export default function Services() {
                     : 'border-ink/10 hover:border-gold/50 hover:bg-white/75'
                 }`}
               >
+                <h3 className="contents">
                 <button
                   onClick={() => setOpenIdx(open ? null : i)}
                   aria-expanded={open}
                   aria-controls={`service-panel-${i}`}
-                  aria-label={`${s.name} — ${s.tag}`}
                   className="w-full text-left p-6 md:p-8 grid grid-cols-[auto_1fr_auto] gap-4 md:gap-8 items-start md:items-center"
                 >
                   <span className="flex flex-col items-center gap-1 pt-1 md:pt-0">
@@ -64,7 +64,7 @@ export default function Services() {
 
                   <span className="block">
                     <span className="flex flex-wrap items-center gap-3">
-                      <h3 className="contents"><span className="display text-2xl md:text-[1.9rem] text-navy">{s.name}</span></h3>
+                      <span className="display text-2xl md:text-[1.9rem] text-navy">{s.name}</span>
                       <span className="text-[0.6rem] uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-gold/25 text-gold-deep">
                         {s.tag}
                       </span>
@@ -84,6 +84,7 @@ export default function Services() {
                     +
                   </span>
                 </button>
+              </h3>
 
                 {/* expandable detail */}
                 <div
