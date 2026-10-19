@@ -1,7 +1,10 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import './styles/index.css';
+
+const JourneyApp = lazy(() => import('./JourneyApp'));
+const useJourney = new URLSearchParams(window.location.search).has('journey');
 
 /* For the curious few who open the console — a note left on the
    kitchen table. Attention is rewarded, quietly. */
@@ -19,6 +22,12 @@ if (typeof window !== 'undefined' && !import.meta.env.DEV) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    {useJourney ? (
+      <Suspense fallback={null}>
+        <JourneyApp />
+      </Suspense>
+    ) : (
+      <App />
+    )}
   </StrictMode>,
 );
