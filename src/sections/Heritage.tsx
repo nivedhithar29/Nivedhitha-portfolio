@@ -61,7 +61,7 @@ export default function Heritage() {
           aria-label="The places that shaped the story"
         >
           {heritage.places.map((place, i) => (
-            <article
+            <div
               key={place.name}
               role="listitem"
               className={`group relative w-[78vw] sm:w-[24rem] md:w-[26rem] ${tiltClass[i % 4]} hover:rotate-0 transition-transform duration-700`}
@@ -80,11 +80,11 @@ export default function Heritage() {
                   {place.line}
                 </p>
               </div>
-            </article>
+            </div>
           ))}
 
           {/* closing note card */}
-          <article className="relative w-[78vw] sm:w-[24rem] md:w-[26rem] rotate-1 hover:rotate-0 transition-transform duration-700">
+          <div role="listitem" className="relative w-[78vw] sm:w-[24rem] md:w-[26rem] rotate-1 hover:rotate-0 transition-transform duration-700">
             <div className="h-full rounded-[1.6rem] bg-navy text-shell p-7 md:p-9 flex flex-col justify-between min-h-[19rem] md:min-h-[21rem]">
               <WaveGlyph className="w-12 text-gold" strokeWidth={2.2} />
               <div>
@@ -94,7 +94,7 @@ export default function Heritage() {
                 <p className="eyebrow text-shell/60 mt-6">Open to international travel</p>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </Reveal>
 
