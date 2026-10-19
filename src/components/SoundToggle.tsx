@@ -32,7 +32,7 @@ export default function SoundToggle() {
       onClick={toggle}
       aria-pressed={on}
       aria-label={on ? 'Mute the ambient ocean' : 'Play the ambient ocean sound'}
-      className={`group fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 flex items-center gap-3 rounded-full border pl-4 pr-5 py-3 backdrop-blur-md transition-all duration-500 ${
+      className={`group fixed bottom-5 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:right-7 md:bottom-7 z-50 flex items-center gap-3 rounded-full border pl-4 pr-5 py-3 backdrop-blur-md transition-all duration-500 ${
         on
           ? 'bg-navy text-shell border-navy shadow-[0_20px_44px_-18px_rgba(28,43,94,0.85)]'
           : 'bg-white/85 text-navy border-ink/15 hover:border-navy/50 shadow-[0_16px_36px_-20px_rgba(28,25,23,0.5)]'

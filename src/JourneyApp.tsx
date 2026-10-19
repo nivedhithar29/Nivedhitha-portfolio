@@ -1,23 +1,19 @@
+import { useEffect } from 'react';
 import Nav from './components/Nav';
 import SoundToggle from './components/SoundToggle';
 import Cursor from './components/Cursor';
 import Atmosphere from './components/Atmosphere';
 import ScrollThread from './components/ScrollThread';
-import ChapterCard from './components/ChapterCard';
-import CityScene from './components/CityScene';
-import JourneyProgress from './components/JourneyProgress';
-import Hero from './sections/Hero';
-import About from './sections/About';
-import Approach from './sections/Approach';
-import BehindLogo from './sections/BehindLogo';
-import Work from './sections/Work';
-import Services from './sections/Services';
-import Contact from './sections/Contact';
-import Footer from './sections/Footer';
-import { heritage } from './data/content';
+import JourneyStage from './components/JourneyStage';
 
 export default function JourneyApp() {
-  const [trichy, salem, milano, chennai] = heritage.places;
+  useEffect(() => {
+    const meta = document.createElement('meta');
+    meta.name = 'robots';
+    meta.content = 'noindex';
+    document.head.appendChild(meta);
+    return () => { document.head.removeChild(meta); };
+  }, []);
 
   return (
     <>
@@ -26,46 +22,12 @@ export default function JourneyApp() {
       <ScrollThread />
       <Cursor />
       <Nav />
-      <JourneyProgress />
       <main>
-        {/* ── 01 · Trichy ── Hero + About ── */}
-        <section id="chapter-trichy" aria-label="Trichy">
-          <CityScene
-            photo="/scenes/trichy.webp"
-            depth="/scenes/trichy-depth.png"
-            focalY={0.2}
-            height="min-h-[70vh] md:min-h-[85vh]"
-            preload={['/scenes/salem.webp']}
-          >
-            <div className="pt-24 md:pt-28">
-              <ChapterCard {...trichy} />
-            </div>
-          </CityScene>
-          <Hero />
-          <About />
-        </section>
-
-        {/* ── 02 · Salem ── Approach ── */}
-        <section id="chapter-salem" aria-label="Salem">
-          <ChapterCard {...salem} />
-          <Approach />
-        </section>
-
-        {/* ── 03 · Milano ── The Mark + Work ── */}
-        <section id="chapter-milano" aria-label="Milano">
-          <ChapterCard {...milano} />
-          <BehindLogo />
-          <Work />
-        </section>
-
-        {/* ── 04 · Chennai ── Services + Contact ── */}
-        <section id="chapter-chennai" aria-label="Chennai">
-          <ChapterCard {...chennai} />
-          <Services />
-          <Contact />
+        <JourneyStage />
+        <section className="bg-shell py-24 md:py-36 text-center">
+          <p className="eyebrow text-ink/40">Site content continues here</p>
         </section>
       </main>
-      <Footer />
       <SoundToggle />
     </>
   );
