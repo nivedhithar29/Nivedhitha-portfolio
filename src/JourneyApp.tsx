@@ -4,6 +4,7 @@ import Cursor from './components/Cursor';
 import Atmosphere from './components/Atmosphere';
 import ScrollThread from './components/ScrollThread';
 import ChapterCard from './components/ChapterCard';
+import CityScene from './components/CityScene';
 import JourneyProgress from './components/JourneyProgress';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -28,8 +29,18 @@ export default function JourneyApp() {
       <JourneyProgress />
       <main>
         {/* ── 01 · Trichy ── Hero + About ── */}
-        <section id="chapter-trichy" aria-label="Trichy" className="pt-20 md:pt-24">
-          <ChapterCard {...trichy} />
+        <section id="chapter-trichy" aria-label="Trichy">
+          <CityScene
+            photo="/scenes/trichy.webp"
+            depth="/scenes/trichy-depth.png"
+            focalY={0.2}
+            height="min-h-[70vh] md:min-h-[85vh]"
+            preload={['/scenes/salem.webp']}
+          >
+            <div className="pt-24 md:pt-28">
+              <ChapterCard {...trichy} />
+            </div>
+          </CityScene>
           <Hero />
           <About />
         </section>
